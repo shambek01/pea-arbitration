@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap&subset=cyrillic');
+
+/* ── Base ─────────────────────────────────────────── */
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.serif {
+    font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
+}
+
+/* ── Brand Colors ─────────────────────────────────── */
+.gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%);
+}
+
+.navy-blue-bg {
+    background-color: #0F172A !important;
+}
+
+.text-navy {
+    color: #0F172A;
+}
+
+/* ── Header ───────────────────────────────────────── */
+header {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ── Hero Animations ──────────────────────────────── */
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.65) 100%);
+}
+
+.text-shadow-strong {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes pulse-gold {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 16px rgba(212, 175, 55, 0);
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    animation: fadeInUp 0.9s ease both;
+}
+
+.hero-desc {
+    animation: fadeInUp 0.9s 0.2s ease both;
+}
+
+.hero-buttons {
+    animation: fadeInUp 0.9s 0.4s ease both;
+}
+
+/* ── Scroll reveal ────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/* ── Stat Cards ───────────────────────────────────── */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+    transition: opacity 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 32px 64px rgba(15, 23, 42, 0.15) !important;
+}
+
+.stat-card:hover::before {
+    opacity: 2;
+}
+
+.stat-number {
+    font-variant-numeric: tabular-nums;
+    animation: countUp 0.6s ease both;
+}
+
+/* ── Feature Cards ────────────────────────────────── */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.10) !important;
+    border-color: #D4AF37 !important;
+}
+
+.feature-icon {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.15) rotate(-5deg);
+    background-color: #D4AF37 !important;
+}
+
+.feature-card:hover .feature-icon i {
+    color: white !important;
+}
+
+/* ── Calculator ───────────────────────────────────── */
+.calc-card {
+    transition: box-shadow 0.3s ease;
+}
+
+.calc-card:hover {
+    box-shadow: 0 40px 80px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* ── Arbitrator Cards ─────────────────────────────── */
+.arb-avatar {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.group:hover .arb-avatar {
+    transform: scale(1.08);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.35);
+}
+
+.arb-card-name {
+    transition: color 0.3s ease;
+}
+
+.group:hover .arb-card-name {
+    color: #D4AF37;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.btn-gold {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gold::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.5);
+}
+
+.btn-gold:hover::after {
+    opacity: 1;
+}
+
+.btn-gold:active {
+    transform: translateY(0);
+}
+
+/* ── Form ─────────────────────────────────────────── */
+.form-input {
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.form-input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+}
+
+/* ── Footer links ─────────────────────────────────── */
+footer li {
+    transition: transform 0.2s ease;
+}
+
+footer li:hover {
+    transform: translateX(4px);
+}
+
+/* ── Language switcher ────────────────────────────── */
+.lang-link {
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.lang-link.active {
+    color: #D4AF37;
+    border-bottom: 2px solid #D4AF37;
+}
+
+/* ── View transitions ─────────────────────────────── */
+.view-content {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.view-hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* ── Modals ───────────────────────────────────────── */
+#arbitrator-modal,
+#success-modal,
+#admin-auth-modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-hidden {
+    opacity: 0;
+    visibility: hidden;
+    display: flex !important;
+    pointer-events: none;
+}
+
+/* ── Loader ───────────────────────────────────────── */
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Glassmorphism card ───────────────────────────── */
+.glass-card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Gold shimmer on hover ────────────────────────── */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.gold-shimmer {
+    background: linear-gradient(90deg, #D4AF37 25%, #f5e17a 50%, #D4AF37 75%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
+
+/* ── Nav link underline animation ─────────────────── */
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D4AF37;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ── Floating scroll indicator ────────────────────── */
+.scroll-indicator {
+    animation: floatY 2.5s ease-in-out infinite;
+}
+
+/* ── Registry search ──────────────────────────────── */
+#registrySearch:focus {
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+/* ── Arbitrator grid cards ────────────────────────── */
+#arbitratorsGrid>div {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#arbitratorsGrid>div:hover {
+    transform: translateY(-4px);
+}

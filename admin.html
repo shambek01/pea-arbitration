@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления — ПЭА</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-slate-100 text-slate-900">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 gold-gradient rounded flex items-center justify-center text-white text-xl">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm uppercase tracking-wider leading-none">Первый Экономический</h1>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest">Арбитраж</p>
+                </div>
+            </div>
+            <a href="index.html"
+                class="text-xs uppercase font-black border-b-2 border-amber-500 pb-1 hover:text-amber-500 transition">
+                <i class="fas fa-arrow-left mr-2"></i>На главную
+            </a>
+        </div>
+    </header>
+
+    <!-- Admin Auth Modal -->
+    <div id="admin-auth-modal"
+        style="position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(15,23,42,0.9);backdrop-filter:blur(8px)">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-12 shadow-2xl text-center">
+            <div
+                class="w-20 h-20 gold-gradient text-white rounded-3xl flex items-center justify-center text-4xl mx-auto mb-8 shadow-xl">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h4 class="serif text-2xl mb-4 text-navy">Вход для Admin</h4>
+            <div class="space-y-6">
+                <input type="password" id="adminPassword" placeholder="Пароль"
+                    class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-amber-500 transition text-center font-black text-xl tracking-[0.5em]">
+                <div id="authError" class="text-red-500 text-xs font-bold" style="display:none">Ошибка. Неверный пароль.
+                </div>
+                <button onclick="checkAdminPassword()"
+                    class="w-full navy-blue-bg text-white py-5 rounded-2xl font-black shadow-lg hover:brightness-110 transition uppercase tracking-widest text-xs">Войти</button>
+                <a href="index.html"
+                    class="block w-full text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-slate-600 transition">Отмена</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <main id="admin-view" style="display:none" class="min-h-screen">
+        <section class="navy-blue-bg py-12 text-white">
+            <div class="container mx-auto px-4 flex justify-between items-end">
+                <div>
+                    <h2 class="serif text-4xl mb-2">Панель управления</h2>
+                    <p class="text-slate-400">Входящие заявления (Firestore)</p>
+                </div>
+                <a href="index.html"
+                    class="text-xs uppercase font-black border-b-2 border-amber-500 pb-1 hover:text-amber-500 transition">Выход</a>
+            </div>
+        </section>
+        <section class="py-12 container mx-auto px-4">
+            <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 border-b border-slate-100">
+                            <tr class="text-[10px] uppercase font-black text-slate-400 tracking-widest">
+                                <th class="p-8">Дата</th>
+                                <th class="p-8">Заявитель</th>
+                                <th class="p-8">Контакты</th>
+                                <th class="p-8">Сумма (KZT)</th>
+                                <th class="p-8">Спор</th>
+                            </tr>
+                        </thead>
+                        <tbody id="claimsTableBody" class="text-sm font-medium"></tbody>
+                    </table>
+                </div>
+                <div id="noClaims" class="p-32 text-center text-slate-300 italic" style="display:none">Заявлений пока
+                    нет.</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Firebase Compat SDK (БЕЗ main.js — он не нужен на этой странице) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <script>
+        // ── Firebase ──────────────────────────────────────────
+        const firebaseConfig = {
+            apiKey: "AIzaSyBn8YOy_S-eMCqNAF6rKmaNgDvPbknXwPE",
+            authDomain: "test-a304d.firebaseapp.com",
+            projectId: "test-a304d",
+            storageBucket: "test-a304d.firebasestorage.app",
+            messagingSenderId: "217531581752",
+            appId: "1:217531581752:web:0a09ca824933cabf44edcd"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // Анонимная авторизация — нужна для Firestore
+        auth.signInAnonymously().catch(err => console.error("Auth error:", err));
+
+        // ── После авторизации — загружаем заявки ──────────────
+        auth.onAuthStateChanged((user) => {
+            if (!user) return;
+
+            db.collection("claims").onSnapshot((snap) => {
+                const body = document.getElementById('claimsTableBody');
+                const empty = document.getElementById('noClaims');
+
+                if (snap.empty) {
+                    body.innerHTML = '';
+                    empty.style.display = 'block';
+                    return;
+                }
+
+                empty.style.display = 'none';
+
+                let rows = [];
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    rows.push({
+                        date: d.timestamp ? new Date(d.timestamp.seconds * 1000).toLocaleDateString('ru-RU') : '...',
+                        name: d.name || '—',
+                        contact: `${d.phone || ''}${d.email ? '<br>' + d.email : ''}`,
+                        amount: d.amount ? `${Number(d.amount).toLocaleString('ru-RU')} KZT` : '—',
+                        msg: d.message || '—',
+                        time: d.timestamp ? d.timestamp.seconds : 0
+                    });
+                });
+
+                rows.sort((a, b) => b.time - a.time);
+
+                body.innerHTML = rows.map(r => `
+                    <tr class="border-b hover:bg-slate-50 transition">
+                        <td class="p-8 text-slate-400 font-mono">${r.date}</td>
+                        <td class="p-8 font-black text-navy text-base">${r.name}</td>
+                        <td class="p-8 text-slate-600 leading-relaxed">${r.contact}</td>
+                        <td class="p-8 font-black text-amber-600 text-lg">${r.amount}</td>
+                        <td class="p-8 text-slate-500 max-w-xs truncate italic">${r.msg}</td>
+                    </tr>
+                `).join('');
+            }, (error) => {
+                console.error("Firestore error:", error);
+                document.getElementById('claimsTableBody').innerHTML =
+                    `<tr><td colspan="5" class="p-8 text-red-400 text-center font-bold">Ошибка: ${error.message}</td></tr>`;
+            });
+        });
+
+        // ── Авторизация Admin ─────────────────────────────────
+        const ADMIN_PASS = "admin123";
+
+        function checkAdminPassword() {
+            if (document.getElementById('adminPassword').value === ADMIN_PASS) {
+                document.getElementById('admin-auth-modal').style.display = 'none';
+                document.getElementById('admin-view').style.display = 'block';
+            } else {
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+
+        document.getElementById('adminPassword').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkAdminPassword();
+        });
+
+        document.getElementById('adminPassword').focus();
+    </script>
+</body>
+
+</html>
