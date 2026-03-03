@@ -23,16 +23,16 @@
                 <div class="cursor-pointer" onclick="switchView('home')">
                     <h1 class="font-bold text-sm uppercase tracking-wider leading-none" data-i18n="brand_name">Первый
                         Экономический</h1>
-                    <p class="text-xs text-slate-500 uppercase tracking-widest" data-i18n="brand_sub">Арбитраж</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest" data-i18n="brand_sub" data-i18n="th_arb" data-i18n="th_arb">Арбитраж</p>
                 </div>
             </div>
 
             <nav class="hidden lg:flex gap-6 text-sm font-medium text-slate-600">
                 <a href="javascript:void(0)" onclick="switchView('about')" class="hover:text-amber-600 transition"
-                    data-i18n="nav_about">Об арбитраже</a>
+                    data-i18n="nav_about" data-i18n="about_title" data-i18n="about_title">Об арбитраже</a>
                 <a href="javascript:void(0)" onclick="switchView('registry')" class="hover:text-amber-600 transition"
                     data-i18n="nav_arbitrators">Арбитры</a>
-                <a href="#" class="hover:text-amber-600 transition" data-i18n="nav_rules">Регламент</a>
+                <a href="#" class="hover:text-amber-600 transition" data-i18n="nav_rules" data-i18n="reg_rules" data-i18n="reg_rules">Регламент</a>
                 <a href="javascript:void(0)"
                     onclick="switchView('home'); setTimeout(() => document.getElementById('calculator-section').scrollIntoView(), 100)"
                     class="hover:text-amber-600 transition" data-i18n="nav_calc">Калькулятор</a>
@@ -68,7 +68,7 @@
 
                 <a href="javascript:void(0)" onclick="switchView('registry'); toggleMobileMenu()"
                     data-i18n="nav_arbitrators">Арбитры</a>
-                <a href="#" data-i18n="nav_rules">Регламент</a>
+                <a href="#" data-i18n="nav_rules" data-i18n="reg_rules" data-i18n="reg_rules">Регламент</a>
                 <a href="javascript:void(0)"
                     onclick="switchView('home'); setTimeout(() => document.getElementById('calculator-section').scrollIntoView(), 100); toggleMobileMenu()"
                     data-i18n="nav_calc">Калькулятор</a>
@@ -105,7 +105,7 @@
                         Подать иск онлайн
                     </button>
                     <button class="glass-card text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition"
-                        data-i18n="btn_clause">
+                        data-i18n="btn_clause" data-i18n="doc1">
                         Арбитражная оговорка
                     </button>
                 </div>
@@ -212,8 +212,8 @@
         <section class="py-28 bg-slate-50 relative z-10 border-t border-slate-200">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 reveal">
-                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4">Как это работает</h3>
-                    <p class="text-slate-500">Простой процесс разрешения спора от подачи заявления до результата</p>
+                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4" data-i18n="how_works_title" data-i18n="how_works_title">Как это работает</h3>
+                    <p class="text-slate-500" data-i18n="how_works_desc" data-i18n="how_works_desc">Простой процесс разрешения спора от подачи заявления до результата</p>
                 </div>
                 <div class="grid md:grid-cols-4 gap-8 relative">
                     <!-- Steps -->
@@ -222,32 +222,32 @@
                             class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-amber-500 text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
                             <i class="fas fa-file-signature"></i>
                         </div>
-                        <h4 class="font-bold text-lg text-navy mb-2">1. Подача иска</h4>
-                        <p class="text-slate-500 text-sm">Заполните форму онлайн или отправьте документы на почту</p>
+                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step1_title" data-i18n="step1_title">1. Подача иска</h4>
+                        <p class="text-slate-500 text-sm" data-i18n="step1_desc" data-i18n="step1_desc">Заполните форму онлайн или отправьте документы на почту</p>
                     </div>
                     <div class="reveal reveal-delay-2 text-center group">
                         <div
                             class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-amber-500 text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h4 class="font-bold text-lg text-navy mb-2">2. Выбор арбитра</h4>
-                        <p class="text-slate-500 text-sm">Стороны выбирают независимого арбитра из нашего реестра</p>
+                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step2_title" data-i18n="step2_title">2. Выбор арбитра</h4>
+                        <p class="text-slate-500 text-sm" data-i18n="step2_desc" data-i18n="step2_desc">Стороны выбирают независимого арбитра из нашего реестра</p>
                     </div>
                     <div class="reveal reveal-delay-3 text-center group">
                         <div
                             class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-amber-500 text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
                             <i class="fas fa-gavel"></i>
                         </div>
-                        <h4 class="font-bold text-lg text-navy mb-2">3. Рассмотрение</h4>
-                        <p class="text-slate-500 text-sm">Оперативное изучение дела с соблюдением конфиденциальности</p>
+                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step3_title" data-i18n="step3_title">3. Рассмотрение</h4>
+                        <p class="text-slate-500 text-sm" data-i18n="step3_desc" data-i18n="step3_desc">Оперативное изучение дела с соблюдением конфиденциальности</p>
                     </div>
                     <div class="reveal reveal-delay-4 text-center group">
                         <div
                             class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-amber-500 text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
                             <i class="fas fa-check-circle"></i>
                         </div>
-                        <h4 class="font-bold text-lg text-navy mb-2">4. Решение</h4>
-                        <p class="text-slate-500 text-sm">Вынесение окончательного решения, имеющего юридическую силу
+                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step4_title" data-i18n="step4_title">4. Решение</h4>
+                        <p class="text-slate-500 text-sm" data-i18n="step4_desc">Вынесение окончательного решения, имеющего юридическую силу
                         </p>
                     </div>
                 </div>
@@ -268,7 +268,7 @@
                         <div class="space-y-6">
                             <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
                                 <i class="fas fa-database text-amber-500 text-xl"></i>
-                                <span data-i18n="form_storage">Безопасное хранение</span>
+                                <span data-i18n="form_storage" data-i18n="form_storage" data-i18n="form_storage">Безопасное хранение</span>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-[10px] uppercase font-black text-slate-400 mb-2"
-                                        data-i18n="label_phone">Телефон</label>
+                                        data-i18n="label_phone" data-i18n="label_phone_short" data-i18n="label_phone_short">Телефон</label>
                                     <input type="tel" name="phone" id="phoneInput" required
                                         placeholder="+7 (707) 000-00-00"
                                         class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
@@ -376,7 +376,7 @@
                                     <div class="flex-1">
                                         <span class="font-bold text-slate-700" data-i18n="doc1">Арбитражная
                                             оговорка</span>
-                                        <p class="text-xs text-slate-400 mt-1">Нажмите, чтобы посмотреть текст оговорки
+                                        <p class="text-xs text-slate-400 mt-1" data-i18n="doc1_hint">Нажмите, чтобы посмотреть текст оговорки
                                         </p>
                                     </div>
                                     <i id="clause-chevron"
@@ -421,8 +421,8 @@
                             <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full -mr-16 -mt-16">
                             </div>
                             <i class="fas fa-file-invoice-dollar text-6xl text-amber-500 mb-8"></i>
-                            <h4 class="font-bold text-2xl mb-4" data-i18n="reg_rules">Регламент</h4>
-                            <p class="text-slate-400 text-sm mb-10">Ознакомьтесь с правилами работы арбитража</p>
+                            <h4 class="font-bold text-2xl mb-4" data-i18n="reg_rules" data-i18n="reg_rules" data-i18n="reg_rules">Регламент</h4>
+                            <p class="text-slate-400 text-sm mb-10" data-i18n="reg_desc" data-i18n="reg_desc">Ознакомьтесь с правилами работы арбитража</p>
                             <button
                                 class="w-full gold-gradient py-4 rounded-xl font-black text-sm uppercase tracking-widest">Скачать
                                 PDF</button>
@@ -436,7 +436,7 @@
         <section class="py-28 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-4xl">
                 <div class="text-center mb-16 reveal">
-                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4">Часто задаваемые вопросы</h3>
+                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4" data-i18n="faq_title" data-i18n="faq_title">Часто задаваемые вопросы</h3>
                 </div>
                 <div class="space-y-4">
                     <div
@@ -450,7 +450,7 @@
                     <div
                         class="bg-white rounded-2xl p-6 md:p-8 reveal reveal-delay-2 border border-slate-100 shadow-sm hover:shadow-md hover:border-amber-200 transition">
                         <h4 class="font-bold text-lg text-navy mb-3"><i
-                                class="fas fa-question-circle text-amber-500 mr-2"></i> Как долго рассматривается дело?
+                                class="fas fa-question-circle text-amber-500 mr-2"></i data-i18n="faq2_q"> Как долго рассматривается дело?
                         </h4>
                         <p class="text-slate-500 leading-relaxed ml-7">В среднем рассмотрение дела в нашем арбитраже
                             занимает от 7 до 14 дней. Это значительно быстрее, чем в государственных судах.</p>
@@ -458,7 +458,7 @@
                     <div
                         class="bg-white rounded-2xl p-6 md:p-8 reveal reveal-delay-3 border border-slate-100 shadow-sm hover:shadow-md hover:border-amber-200 transition">
                         <h4 class="font-bold text-lg text-navy mb-3"><i
-                                class="fas fa-question-circle text-amber-500 mr-2"></i> Можно ли обжаловать решение?
+                                class="fas fa-question-circle text-amber-500 mr-2"></i data-i18n="faq3_q"> Можно ли обжаловать решение?
                         </h4>
                         <p class="text-slate-500 leading-relaxed ml-7">Решение арбитража является окончательным и не
                             подлежит апелляционному обжалованию, что экономит время и средства сторон.</p>
@@ -478,14 +478,14 @@
                     <i class="fas fa-chevron-right text-[10px]"></i>
                     <span class="text-white" data-i18n="nav_arbitrators">Арбитры</span>
                 </nav>
-                <h2 class="serif text-4xl" data-i18n="arb_title">Реестр арбитров</h2>
+                <h2 class="serif text-4xl" data-i18n="arb_title" data-i18n="arb_registry_title" data-i18n="arb_registry_title">Реестр арбитров</h2>
             </div>
         </section>
         <section class="py-12 bg-white sticky top-[64px] z-40 border-b shadow-sm">
             <div class="container mx-auto px-4">
                 <div class="relative w-full max-w-xl">
                     <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="registrySearch" placeholder="Поиск арбитра по фамилии..."
+                    <input type="text" id="registrySearch" placeholder="Поиск арбитра по фамилии..." data-i18n-placeholder="val_search"
                         class="w-full pl-14 pr-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-amber-500 transition text-lg"
                         oninput="filterArbitrators()">
                 </div>
@@ -495,7 +495,7 @@
             <div id="arbitratorsGrid" class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8"></div>
             <div id="noResults" class="hidden py-20 text-center text-slate-400">
                 <i class="fas fa-user-slash text-5xl mb-4"></i>
-                <p>По вашему запросу ничего не найдено</p>
+                <p data-i18n="search_not_found" data-i18n="search_not_found">По вашему запросу ничего не найдено</p>
             </div>
         </section>
     </main>
@@ -511,8 +511,8 @@
                     <i class="fas fa-chevron-right text-[10px]"></i>
                     <span class="text-white">О нас</span>
                 </nav>
-                <h2 class="serif text-4xl">Об арбитраже</h2>
-                <p class="text-slate-400 mt-2">Всё, что нужно знать об арбитражном разбирательстве</p>
+                <h2 class="serif text-4xl" data-i18n="about_title" data-i18n="about_title">Об арбитраже</h2>
+                <p class="text-slate-400 mt-2" data-i18n="about_desc" data-i18n="about_desc">Всё, что нужно знать об арбитражном разбирательстве</p>
             </div>
         </section>
 
@@ -525,7 +525,7 @@
                     <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
                         <span
                             class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
-                                class="fas fa-gavel"></i></span>
+                                class="fas fa-gavel"></i></span data-i18n="about_q1">
                         Что такое арбитраж
                     </h4>
                     <p class="text-slate-600 leading-relaxed mb-4">Арбитраж – это негосударственный суд, образованный
@@ -544,7 +544,7 @@
                     <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
                         <span
                             class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
-                                class="fas fa-users"></i></span>
+                                class="fas fa-users"></i></span data-i18n="about_q2">
                         Кто вправе обратиться в арбитраж
                     </h4>
                     <p class="text-slate-600 leading-relaxed mb-4">Сторонами в арбитраже могут быть физические и (или)
@@ -566,7 +566,7 @@
                     <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
                         <span
                             class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
-                                class="fas fa-file-contract"></i></span>
+                                class="fas fa-file-contract"></i></span data-i18n="about_q3">
                         Форма и содержание арбитражного соглашения
                     </h4>
                     <p class="text-slate-600 leading-relaxed mb-4">Арбитражное соглашение считается заключённым в
@@ -594,14 +594,14 @@
                         <h4 class="font-bold text-lg text-navy mb-4 flex items-center gap-3">
                             <span
                                 class="w-9 h-9 bg-green-500 text-white rounded-lg flex items-center justify-center shrink-0"><i
-                                    class="fas fa-check"></i></span>
+                                    class="fas fa-check"></i></span data-i18n="about_q4">
                             Какие споры рассматривает арбитраж?
                         </h4>
                         <p class="text-slate-600 text-sm mb-4">Арбитраж вправе рассматривать споры, вытекающие из
                             гражданско-правовых отношений, между физическими и (или) юридическими лицами:</p>
                         <ul class="space-y-2 text-slate-600 text-sm">
                             <li class="flex items-start gap-2"><i
-                                    class="fas fa-circle text-green-500 text-[6px] mt-2"></i> имущественные споры;</li>
+                                    class="fas fa-circle text-green-500 text-[6px] mt-2"></i data-i18n="about_a4_li1"> имущественные споры;</li>
                             <li class="flex items-start gap-2"><i
                                     class="fas fa-circle text-green-500 text-[6px] mt-2"></i> споры, возникающие из
                                 личных неимущественных отношений, связанных с имущественными.</li>
@@ -611,7 +611,7 @@
                         <h4 class="font-bold text-lg text-navy mb-4 flex items-center gap-3">
                             <span
                                 class="w-9 h-9 bg-red-500 text-white rounded-lg flex items-center justify-center shrink-0"><i
-                                    class="fas fa-times"></i></span>
+                                    class="fas fa-times"></i></span data-i18n="about_q5">
                             Арбитражу не подведомственны споры:
                         </h4>
                         <ul class="space-y-2 text-slate-600 text-sm">
@@ -643,7 +643,7 @@
                     <h4 class="font-bold text-xl text-navy mb-6 flex items-center gap-3">
                         <span
                             class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
-                                class="fas fa-star"></i></span>
+                                class="fas fa-star"></i></span data-i18n="about_q6">
                         Преимущества рассмотрения спора в арбитраже по сравнению с государственным судом
                     </h4>
                     <div class="grid md:grid-cols-2 gap-4">
@@ -659,15 +659,15 @@
                         </div>
                         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
                                 class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
-                            <p class="text-slate-600 text-sm">Стороны вправе самостоятельно выбирать арбитров.</p>
+                            <p class="text-slate-600 text-sm" data-i18n="about_a6_li3" data-i18n="about_a6_li3">Стороны вправе самостоятельно выбирать арбитров.</p>
                         </div>
                         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
                                 class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
-                            <p class="text-slate-600 text-sm">Конфиденциальность разбирательства.</p>
+                            <p class="text-slate-600 text-sm" data-i18n="about_a6_li4" data-i18n="about_a6_li4">Конфиденциальность разбирательства.</p>
                         </div>
                         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
                                 class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
-                            <p class="text-slate-600 text-sm">Быстрота и эффективность процесса.</p>
+                            <p class="text-slate-600 text-sm" data-i18n="about_a6_li5" data-i18n="about_a6_li5">Быстрота и эффективность процесса.</p>
                         </div>
                         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
                                 class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
@@ -686,46 +686,46 @@
 
                 <!-- Comparison Table: Court vs Arbitration -->
                 <div>
-                    <h4 class="font-bold text-xl text-navy mb-6 text-center">Сравнение суда и арбитража</h4>
+                    <h4 class="font-bold text-xl text-navy mb-6 text-center" data-i18n="table1_title" data-i18n="table1_title">Сравнение суда и арбитража</h4>
                     <div class="overflow-x-auto rounded-2xl shadow-sm border border-slate-200">
                         <table class="w-full text-sm">
                             <thead>
                                 <tr class="navy-blue-bg text-white">
-                                    <th class="p-5 text-left font-bold">Сравнение</th>
-                                    <th class="p-5 text-center font-bold">Суд</th>
-                                    <th class="p-5 text-center font-bold text-amber-400">Арбитраж</th>
+                                    <th class="p-5 text-left font-bold" data-i18n="th_comp" data-i18n="th_comp">Сравнение</th>
+                                    <th class="p-5 text-center font-bold" data-i18n="th_court" data-i18n="th_court">Суд</th>
+                                    <th class="p-5 text-center font-bold text-amber-400" data-i18n="th_arb" data-i18n="th_arb">Арбитраж</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 <tr class="bg-white hover:bg-slate-50 transition">
-                                    <td class="p-5 font-semibold text-slate-700">Срок рассмотрения дела</td>
-                                    <td class="p-5 text-center text-slate-600">3 месяца</td>
-                                    <td class="p-5 text-center text-green-600 font-bold">1 месяц, максимум 2 месяца</td>
+                                    <td class="p-5 font-semibold text-slate-700" data-i18n="td_term_title" data-i18n="td_term_title">Срок рассмотрения дела</td>
+                                    <td class="p-5 text-center text-slate-600" data-i18n="td_term_court" data-i18n="td_term_court">3 месяца</td>
+                                    <td class="p-5 text-center text-green-600 font-bold" data-i18n="td_term_arb" data-i18n="td_term_arb">1 месяц, максимум 2 месяца</td>
                                 </tr>
                                 <tr class="bg-slate-50 hover:bg-slate-100 transition">
-                                    <td class="p-5 font-semibold text-slate-700">Вступление в законную силу решения</td>
+                                    <td class="p-5 font-semibold text-slate-700" data-i18n="td_force_title" data-i18n="td_force_title">Вступление в законную силу решения</td>
                                     <td class="p-5 text-center text-slate-600">Через 1 месяц после изготовления в
                                         окончательной форме</td>
                                     <td class="p-5 text-center text-green-600 font-bold">В день изготовления решения в
                                         окончательной форме</td>
                                 </tr>
                                 <tr class="bg-white hover:bg-slate-50 transition">
-                                    <td class="p-5 font-semibold text-slate-700">Основания для отмены решения</td>
-                                    <td class="p-5 text-center text-slate-600">По любым основаниям</td>
+                                    <td class="p-5 font-semibold text-slate-700" data-i18n="td_cancel_title" data-i18n="td_cancel_title">Основания для отмены решения</td>
+                                    <td class="p-5 text-center text-slate-600" data-i18n="td_cancel_court" data-i18n="td_cancel_court">По любым основаниям</td>
                                     <td class="p-5 text-center text-green-600 font-bold">Только процессуальные
                                         нарушения, без пересмотра решения арбитража по существу</td>
                                 </tr>
                                 <tr class="bg-slate-50 hover:bg-slate-100 transition">
-                                    <td class="p-5 font-semibold text-slate-700">Территориальная подсудность</td>
+                                    <td class="p-5 font-semibold text-slate-700" data-i18n="td_terr_title" data-i18n="td_terr_title">Территориальная подсудность</td>
                                     <td class="p-5 text-center text-slate-600">Только на определённой территории, на
                                         которой расположен суд</td>
-                                    <td class="p-5 text-center text-green-600 font-bold">По всей территории Казахстана
+                                    <td class="p-5 text-center text-green-600 font-bold" data-i18n="td_terr_arb">По всей территории Казахстана
                                     </td>
                                 </tr>
                                 <tr class="bg-white hover:bg-slate-50 transition">
-                                    <td class="p-5 font-semibold text-slate-700">Сумма госпошлины и арбитражного сбора
+                                    <td class="p-5 font-semibold text-slate-700" data-i18n="td_fee_title">Сумма госпошлины и арбитражного сбора
                                     </td>
-                                    <td class="p-5 text-center text-slate-600">3%, максимум 20 000 МРП</td>
+                                    <td class="p-5 text-center text-slate-600" data-i18n="td_fee_court" data-i18n="td_fee_court">3%, максимум 20 000 МРП</td>
                                     <td class="p-5 text-center text-green-600 font-bold">Чем больше сумма иска, тем
                                         меньше арбитражный сбор, максимум 15 000 МРП</td>
                                 </tr>
@@ -742,9 +742,9 @@
                         <table class="w-full text-sm">
                             <thead>
                                 <tr class="navy-blue-bg text-white">
-                                    <th class="p-5 text-left font-bold">Цена иска (тенге)</th>
-                                    <th class="p-5 text-center font-bold">Госпошлина (тенге)</th>
-                                    <th class="p-5 text-center font-bold text-amber-400">Арбитражный сбор (тенге)</th>
+                                    <th class="p-5 text-left font-bold" data-i18n="th2_1" data-i18n="th2_1">Цена иска (тенге)</th>
+                                    <th class="p-5 text-center font-bold" data-i18n="th2_2" data-i18n="th2_2">Госпошлина (тенге)</th>
+                                    <th class="p-5 text-center font-bold text-amber-400" data-i18n="th2_3" data-i18n="th2_3">Арбитражный сбор (тенге)</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
@@ -769,7 +769,7 @@
                                     <td class="p-5 text-center text-green-600 font-bold">15 000 000</td>
                                 </tr>
                                 <tr class="bg-white hover:bg-slate-50 transition">
-                                    <td class="p-5 font-semibold text-slate-700">от 650 000 МРП и более</td>
+                                    <td class="p-5 font-semibold text-slate-700" data-i18n="td2_last" data-i18n="td2_last">от 650 000 МРП и более</td>
                                     <td class="p-5 text-center text-slate-600">20 000 МРП</td>
                                     <td class="p-5 text-center text-green-600 font-bold">15 000 МРП</td>
                                 </tr>
@@ -802,7 +802,7 @@
                 </div>
                 <div class="md:w-3/5 p-12 md:p-16 overflow-y-auto max-h-[80vh]">
                     <h5 class="serif text-3xl mb-8 text-navy border-b-4 border-amber-500 inline-block pb-2"
-                        data-i18n="modal_bio_title">Биография</h5>
+                        data-i18n="modal_bio_title" data-i18n="modal_bio_title" data-i18n="modal_bio_title">Биография</h5>
                     <div id="modal-bio" class="text-slate-600 text-lg leading-relaxed space-y-6"></div>
                 </div>
             </div>
@@ -834,15 +834,15 @@
                 class="w-20 h-20 gold-gradient text-white rounded-3xl flex items-center justify-center text-4xl mx-auto mb-8 shadow-xl">
                 <i class="fas fa-lock"></i>
             </div>
-            <h4 class="serif text-2xl mb-4 text-navy">Вход для Admin</h4>
+            <h4 class="serif text-2xl mb-4 text-navy" data-i18n="admin_login_title" data-i18n="admin_login_title">Вход для Admin</h4>
             <div class="space-y-6">
-                <input type="password" id="adminPassword" placeholder="Пароль"
+                <input type="password" id="adminPassword" placeholder="Пароль" data-i18n-placeholder="admin_pass_placeholder"
                     class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-amber-500 transition text-center font-black text-xl tracking-[0.5em]">
-                <div id="authError" class="text-red-500 text-xs font-bold hidden">Ошибка. Неверный пароль.</div>
+                <div id="authError" class="text-red-500 text-xs font-bold hidden" data-i18n="admin_pass_error" data-i18n="admin_pass_error">Ошибка. Неверный пароль.</div>
                 <button onclick="checkAdminPassword()"
-                    class="w-full navy-blue-bg text-white py-5 rounded-2xl font-black shadow-lg hover:brightness-110 transition uppercase tracking-widest text-xs">Войти</button>
+                    class="w-full navy-blue-bg text-white py-5 rounded-2xl font-black shadow-lg hover:brightness-110 transition uppercase tracking-widest text-xs" data-i18n="admin_enter" data-i18n="admin_enter">Войти</button>
                 <button onclick="closeAdminAuth()"
-                    class="w-full text-slate-400 text-[10px] font-black uppercase tracking-widest">Отмена</button>
+                    class="w-full text-slate-400 text-[10px] font-black uppercase tracking-widest" data-i18n="admin_cancel" data-i18n="admin_cancel">Отмена</button>
             </div>
         </div>
     </div>
@@ -851,7 +851,7 @@
     <section class="border-t-8 border-amber-500">
         <!-- Mobile: card on top -->
         <div class="block md:hidden bg-white px-6 py-10">
-            <h4 class="serif text-2xl text-navy mb-6">Наш офис</h4>
+            <h4 class="serif text-2xl text-navy mb-6" data-i18n="office_title" data-i18n="office_title">Наш офис</h4>
             <div class="space-y-5">
                 <div class="flex items-start gap-4">
                     <div
@@ -859,8 +859,8 @@
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
-                        <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1">Адрес</p>
-                        <p class="text-navy font-semibold text-sm">г. Астана, пр-т Кабанбай батыр, 53, блок D2</p>
+                        <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1" data-i18n="label_address" data-i18n="label_address">Адрес</p>
+                        <p class="text-navy font-semibold text-sm" data-i18n="address" data-i18n="address">г. Астана, пр-т Кабанбай батыр, 53, блок D2</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -869,8 +869,8 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div>
-                        <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1">Режим работы</p>
-                        <p class="text-navy font-semibold text-sm">Пн-Пт: 09:00 - 18:00</p>
+                        <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1" data-i18n="label_working_hours" data-i18n="label_working_hours">Режим работы</p>
+                        <p class="text-navy font-semibold text-sm" data-i18n="working_hours" data-i18n="working_hours">Пн-Пт: 09:00 - 18:00</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -879,7 +879,7 @@
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <div>
-                        <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1">Телефон</p>
+                        <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1" data-i18n="label_phone_short" data-i18n="label_phone_short">Телефон</p>
                         <p class="text-navy font-bold text-lg">8 (7172) 77-95-45</p>
                     </div>
                 </div>
@@ -891,7 +891,7 @@
                 width="100%" height="100%" frameborder="0" class="absolute inset-0 transition duration-700"></iframe>
             <!-- Desktop card overlay -->
             <div class="hidden md:block absolute top-8 left-[8%] z-10 bg-white p-8 rounded-[2rem] shadow-2xl max-w-xs">
-                <h4 class="serif text-3xl text-navy mb-8">Наш офис</h4>
+                <h4 class="serif text-3xl text-navy mb-8" data-i18n="office_title" data-i18n="office_title">Наш офис</h4>
                 <div class="space-y-6">
                     <div class="flex items-start gap-5 group">
                         <div
@@ -899,8 +899,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1">Адрес</p>
-                            <p class="text-navy font-semibold text-sm">г. Астана, пр-т Кабанбай батыр, 53,<br>блок D2
+                            <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1" data-i18n="label_address" data-i18n="label_address">Адрес</p>
+                            <p class="text-navy font-semibold text-sm" data-i18n="address_br">г. Астана, пр-т Кабанбай батыр, 53,<br>блок D2
                             </p>
                         </div>
                     </div>
@@ -910,9 +910,9 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
-                            <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1">Режим работы
+                            <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1" data-i18n="label_working_hours">Режим работы
                             </p>
-                            <p class="text-navy font-semibold text-sm">Пн-Пт: 09:00 - 18:00</p>
+                            <p class="text-navy font-semibold text-sm" data-i18n="working_hours" data-i18n="working_hours">Пн-Пт: 09:00 - 18:00</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-5 group">
@@ -921,7 +921,7 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div>
-                            <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1">Телефон</p>
+                            <p class="font-black text-[10px] text-slate-400 uppercase tracking-widest mb-1" data-i18n="label_phone_short" data-i18n="label_phone_short">Телефон</p>
                             <p class="text-navy font-bold text-lg">8 (7172) 77-95-45</p>
                         </div>
                     </div>
@@ -945,7 +945,7 @@
                             <i class="fas fa-map-marker-alt text-amber-400 group-hover:text-white"></i>
                         </div>
                         <span class="text-white group-hover:text-amber-300 leading-relaxed font-bold"
-                            data-i18n="address">г. Астана, пр-т Кабанбай батыр, 53, блок D2</span>
+                            data-i18n="address" data-i18n="address" data-i18n="address">г. Астана, пр-т Кабанбай батыр, 53, блок D2</span>
                     </li>
                     <li class="flex gap-5 group cursor-pointer">
                         <div
@@ -961,7 +961,7 @@
                     data-i18n="footer_sections">Разделы</h4>
                 <ul class="space-y-4 text-sm font-bold text-white">
                     <li class="hover:text-amber-500 transition cursor-pointer" onclick="switchView('home')"
-                        data-i18n="nav_about">Об арбитраже</li>
+                        data-i18n="nav_about" data-i18n="about_title" data-i18n="about_title">Об арбитраже</li>
                     <li class="hover:text-amber-500 transition cursor-pointer" onclick="switchView('registry')"
                         data-i18n="nav_arbitrators">Арбитры</li>
                 </ul>
