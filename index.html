@@ -28,8 +28,8 @@
             </div>
 
             <nav class="hidden lg:flex gap-6 text-sm font-medium text-slate-600">
-                <a href="javascript:void(0)" onclick="switchView('home')" class="hover:text-amber-600 transition"
-                    data-i18n="nav_about">О нас</a>
+                <a href="javascript:void(0)" onclick="switchView('about')" class="hover:text-amber-600 transition"
+                    data-i18n="nav_about">Об арбитраже</a>
                 <a href="javascript:void(0)" onclick="switchView('registry')" class="hover:text-amber-600 transition"
                     data-i18n="nav_arbitrators">Арбитры</a>
                 <a href="#" class="hover:text-amber-600 transition" data-i18n="nav_rules">Регламент</a>
@@ -63,8 +63,9 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white">
             <nav class="flex flex-col px-4 py-4 gap-4 text-sm font-semibold text-slate-700">
-                <a href="javascript:void(0)" onclick="switchView('home'); toggleMobileMenu()" data-i18n="nav_about">О
-                    нас</a>
+                <a href="javascript:void(0)" onclick="switchView('about'); toggleMobileMenu()" data-i18n="nav_about">Об
+                    арбитраже</a>
+
                 <a href="javascript:void(0)" onclick="switchView('registry'); toggleMobileMenu()"
                     data-i18n="nav_arbitrators">Арбитры</a>
                 <a href="#" data-i18n="nav_rules">Регламент</a>
@@ -364,14 +365,38 @@
                         <p class="text-slate-500 mb-10 text-lg leading-relaxed" data-i18n="lib_desc">Мы подготовили все
                             необходимые шаблоны для вашей защиты.</p>
                         <div class="grid gap-4">
-                            <a href="#"
-                                class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-transparent hover:border-amber-200">
-                                <div
-                                    class="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-2xl">
-                                    <i class="far fa-file-word"></i>
+                            <!-- Arbitration Clause Card -->
+                            <div
+                                class="bg-white rounded-2xl shadow-sm border border-transparent hover:border-amber-200 transition overflow-hidden">
+                                <button onclick="toggleClause()" class="flex items-center gap-5 p-6 w-full text-left">
+                                    <div
+                                        class="w-14 h-14 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-2xl shrink-0">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="font-bold text-slate-700" data-i18n="doc1">Арбитражная
+                                            оговорка</span>
+                                        <p class="text-xs text-slate-400 mt-1">Нажмите, чтобы посмотреть текст оговорки
+                                        </p>
+                                    </div>
+                                    <i id="clause-chevron"
+                                        class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                                </button>
+                                <div id="clause-text" class="hidden px-6 pb-6">
+                                    <div
+                                        class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-slate-700 italic text-sm leading-relaxed">
+                                        Все споры, разногласия или требования, возникшие из настоящего договора
+                                        (соглашения, контракта), либо в связи с ним, подлежат разрешению в постоянно
+                                        действующем арбитраже – ТОО «Центрально-Азиатский экономический арбитраж» в
+                                        соответствии с его Регламентом. Состав арбитража будет включать одного арбитра.
+                                        Язык арбитражного разбирательства – русский.
+                                    </div>
+                                    <p class="text-slate-400 text-xs mt-3"><i
+                                            class="fas fa-info-circle text-amber-500 mr-1"></i>Для включения в уже
+                                        заключённый договор необходимо оформить дополнительное соглашение с данной
+                                        оговоркой.</p>
                                 </div>
-                                <span class="font-bold text-slate-700" data-i18n="doc1">Арбитражная оговорка</span>
-                            </a>
+                            </div>
                             <a href="#"
                                 class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-transparent hover:border-amber-200">
                                 <div
@@ -381,6 +406,14 @@
                                 <span class="font-bold text-slate-700" data-i18n="doc2">Образец иска</span>
                             </a>
                         </div>
+                        <script>
+                            function toggleClause() {
+                                const text = document.getElementById('clause-text');
+                                const icon = document.getElementById('clause-chevron');
+                                text.classList.toggle('hidden');
+                                icon.classList.toggle('rotate-180');
+                            }
+                        </script>
                     </div>
                     <div class="md:w-1/3 w-full">
                         <div
@@ -435,6 +468,7 @@
         </section>
     </main>
 
+
     <!-- FULL REGISTRY VIEW -->
     <main id="registry-view" class="view-content view-hidden min-h-screen">
         <section class="navy-blue-bg py-12 text-white">
@@ -467,7 +501,288 @@
     </main>
 
 
-    <!-- Arbitrator Modal -->
+    <!-- ABOUT VIEW -->
+    <main id="about-view" class="view-content view-hidden min-h-screen">
+        <!-- Hero bar -->
+        <section class="navy-blue-bg py-12 text-white">
+            <div class="container mx-auto px-4">
+                <nav class="flex text-xs uppercase tracking-widest text-slate-400 mb-6 gap-2 items-center">
+                    <a href="javascript:void(0)" onclick="switchView('home')" class="hover:text-amber-500">Главная</a>
+                    <i class="fas fa-chevron-right text-[10px]"></i>
+                    <span class="text-white">О нас</span>
+                </nav>
+                <h2 class="serif text-4xl">Об арбитраже</h2>
+                <p class="text-slate-400 mt-2">Всё, что нужно знать об арбитражном разбирательстве</p>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <section class="py-16 bg-slate-50">
+            <div class="container mx-auto px-4 max-w-5xl space-y-10">
+
+                <!-- What is arbitration -->
+                <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                    <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
+                        <span
+                            class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                class="fas fa-gavel"></i></span>
+                        Что такое арбитраж
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed mb-4">Арбитраж – это негосударственный суд, образованный
+                        специально для рассмотрения конкретного гражданско-правового спора или постоянно действующий
+                        арбитраж.</p>
+                    <p class="text-slate-600 leading-relaxed mb-4">Постоянно действующие арбитражи могут образовываться
+                        физическими и (или) юридическими лицами в соответствии с законодательством Республики Казахстан.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">Арбитраж для рассмотрения конкретного спора создается
+                        сторонами для разрешения спора и действует до разрешения данного спора или до принятия сторонами
+                        решения о передаче спора в суд.</p>
+                </div>
+
+                <!-- Who can apply -->
+                <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                    <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
+                        <span
+                            class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                class="fas fa-users"></i></span>
+                        Кто вправе обратиться в арбитраж
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed mb-4">Сторонами в арбитраже могут быть физические и (или)
+                        юридические лица, независимо от их места жительства или места нахождения на территории
+                        Республики Казахстан либо за её пределами. Спор может быть передан на рассмотрение арбитража при
+                        наличии заключённого между сторонами арбитражного соглашения в отношении споров, которые
+                        возникли или могут возникнуть между сторонами по какому-либо конкретному гражданско-правовому
+                        отношению.</p>
+                    <p class="text-slate-600 leading-relaxed mb-4">Арбитражное соглашение в отношении спора, который
+                        находится на рассмотрении в суде, может быть заключено до принятия решения по спору указанным
+                        судом. В этом случае суд выносит определение об оставлении заявления без рассмотрения.</p>
+                    <p class="text-slate-600 leading-relaxed">Арбитражное соглашение заключается в письменной форме. Оно
+                        может быть заключено в виде арбитражной оговорки, включённой в текст гражданско-правового
+                        договора.</p>
+                </div>
+
+                <!-- Form and content of agreement -->
+                <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                    <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
+                        <span
+                            class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                class="fas fa-file-contract"></i></span>
+                        Форма и содержание арбитражного соглашения
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed mb-4">Арбитражное соглашение считается заключённым в
+                        письменной форме, если оно содержится в виде арбитражной оговорки в документе, подписанном
+                        сторонами, либо заключено путём обмена письмами, телеграммами, телефонограммами, факсами,
+                        электронными документами или иными документами, определяющими субъектов и содержание их
+                        волеизъявления.</p>
+                    <p class="text-slate-600 leading-relaxed mb-4">Арбитражное соглашение также считается заключённым в
+                        письменной форме, если оно заключается путём обмена исковым заявлением и отзывом на иск, в
+                        которых одна из сторон утверждает о наличии соглашения, а другая против этого не возражает.</p>
+                    <p class="text-slate-600 leading-relaxed">Ссылка в договоре на документ, содержащий условие о
+                        передаче спора на разрешение арбитража, является арбитражным соглашением при условии, что
+                        договор заключён в письменной форме, и данная ссылка такова, что делает арбитражное соглашение
+                        частью договора.</p>
+                    <div class="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl text-slate-500 text-sm">
+                        <i class="fas fa-info-circle text-amber-500 mr-2"></i>Для включения арбитражной оговорки в
+                        заключённый договор (соглашение, контракт) необходимо заключить дополнительное соглашение к
+                        нему, в котором предусмотреть вышеуказанную арбитражную оговорку.
+                    </div>
+                </div>
+
+                <!-- Types of disputes -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                        <h4 class="font-bold text-lg text-navy mb-4 flex items-center gap-3">
+                            <span
+                                class="w-9 h-9 bg-green-500 text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                    class="fas fa-check"></i></span>
+                            Какие споры рассматривает арбитраж?
+                        </h4>
+                        <p class="text-slate-600 text-sm mb-4">Арбитраж вправе рассматривать споры, вытекающие из
+                            гражданско-правовых отношений, между физическими и (или) юридическими лицами:</p>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-green-500 text-[6px] mt-2"></i> имущественные споры;</li>
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-green-500 text-[6px] mt-2"></i> споры, возникающие из
+                                личных неимущественных отношений, связанных с имущественными.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                        <h4 class="font-bold text-lg text-navy mb-4 flex items-center gap-3">
+                            <span
+                                class="w-9 h-9 bg-red-500 text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                    class="fas fa-times"></i></span>
+                            Арбитражу не подведомственны споры:
+                        </h4>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-red-400 text-[6px] mt-2"></i> затрагивающие интересы
+                                несовершеннолетних лиц, недееспособных или ограниченно дееспособных, третьих лиц, не
+                                являющихся участниками арбитражного соглашения;</li>
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-red-400 text-[6px] mt-2"></i> споры между банками второго
+                                уровня;</li>
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-red-400 text-[6px] mt-2"></i> о реабилитации и
+                                банкротстве;</li>
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-red-400 text-[6px] mt-2"></i> между субъектами
+                                естественных монополий и их потребителями;</li>
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-red-400 text-[6px] mt-2"></i> между государственными
+                                органами, субъектами квазигосударственного сектора;</li>
+                            <li class="flex items-start gap-2"><i
+                                    class="fas fa-circle text-red-400 text-[6px] mt-2"></i> возникающие из личных
+                                неимущественных отношений, не связанных с имущественными.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Advantages vs court -->
+                <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                    <h4 class="font-bold text-xl text-navy mb-6 flex items-center gap-3">
+                        <span
+                            class="w-9 h-9 gold-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                class="fas fa-star"></i></span>
+                        Преимущества рассмотрения спора в арбитраже по сравнению с государственным судом
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Спорящие стороны вправе самостоятельно определить правила,
+                                по которым арбитраж должен будет рассмотреть спор.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Стороны вправе самостоятельно выбрать место и язык
+                                разбирательства.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Стороны вправе самостоятельно выбирать арбитров.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Конфиденциальность разбирательства.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Быстрота и эффективность процесса.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Решение арбитража является окончательным, пересмотру по
+                                существу дела не подлежит.</p>
+                        </div>
+                        <div
+                            class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 md:col-span-2">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 shrink-0"></i>
+                            <p class="text-slate-600 text-sm">Арбитражное решение легче исполнить на территории
+                                иностранного государства, благодаря наличию Конвенции о признании и приведении в
+                                исполнение иностранных арбитражных решений (г. Нью-Йорк, 10 июня 1958 года).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Table: Court vs Arbitration -->
+                <div>
+                    <h4 class="font-bold text-xl text-navy mb-6 text-center">Сравнение суда и арбитража</h4>
+                    <div class="overflow-x-auto rounded-2xl shadow-sm border border-slate-200">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="navy-blue-bg text-white">
+                                    <th class="p-5 text-left font-bold">Сравнение</th>
+                                    <th class="p-5 text-center font-bold">Суд</th>
+                                    <th class="p-5 text-center font-bold text-amber-400">Арбитраж</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="p-5 font-semibold text-slate-700">Срок рассмотрения дела</td>
+                                    <td class="p-5 text-center text-slate-600">3 месяца</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">1 месяц, максимум 2 месяца</td>
+                                </tr>
+                                <tr class="bg-slate-50 hover:bg-slate-100 transition">
+                                    <td class="p-5 font-semibold text-slate-700">Вступление в законную силу решения</td>
+                                    <td class="p-5 text-center text-slate-600">Через 1 месяц после изготовления в
+                                        окончательной форме</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">В день изготовления решения в
+                                        окончательной форме</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="p-5 font-semibold text-slate-700">Основания для отмены решения</td>
+                                    <td class="p-5 text-center text-slate-600">По любым основаниям</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">Только процессуальные
+                                        нарушения, без пересмотра решения арбитража по существу</td>
+                                </tr>
+                                <tr class="bg-slate-50 hover:bg-slate-100 transition">
+                                    <td class="p-5 font-semibold text-slate-700">Территориальная подсудность</td>
+                                    <td class="p-5 text-center text-slate-600">Только на определённой территории, на
+                                        которой расположен суд</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">По всей территории Казахстана
+                                    </td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="p-5 font-semibold text-slate-700">Сумма госпошлины и арбитражного сбора
+                                    </td>
+                                    <td class="p-5 text-center text-slate-600">3%, максимум 20 000 МРП</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">Чем больше сумма иска, тем
+                                        меньше арбитражный сбор, максимум 15 000 МРП</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Fee Comparison Table -->
+                <div>
+                    <h4 class="font-bold text-xl text-navy mb-6 text-center">Сравнение размеров госпошлины и
+                        арбитражного сбора</h4>
+                    <div class="overflow-x-auto rounded-2xl shadow-sm border border-slate-200">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="navy-blue-bg text-white">
+                                    <th class="p-5 text-left font-bold">Цена иска (тенге)</th>
+                                    <th class="p-5 text-center font-bold">Госпошлина (тенге)</th>
+                                    <th class="p-5 text-center font-bold text-amber-400">Арбитражный сбор (тенге)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="p-5 font-semibold text-slate-700">70 000 000</td>
+                                    <td class="p-5 text-center text-slate-600">2 100 000</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">1 400 000</td>
+                                </tr>
+                                <tr class="bg-slate-50 hover:bg-slate-100 transition">
+                                    <td class="p-5 font-semibold text-slate-700">200 000 000</td>
+                                    <td class="p-5 text-center text-slate-600">6 000 000</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">3 000 000</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="p-5 font-semibold text-slate-700">500 000 000</td>
+                                    <td class="p-5 text-center text-slate-600">15 000 000</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">7 500 000</td>
+                                </tr>
+                                <tr class="bg-slate-50 hover:bg-slate-100 transition">
+                                    <td class="p-5 font-semibold text-slate-700">1 000 000 000</td>
+                                    <td class="p-5 text-center text-slate-600">30 000 000</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">15 000 000</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="p-5 font-semibold text-slate-700">от 650 000 МРП и более</td>
+                                    <td class="p-5 text-center text-slate-600">20 000 МРП</td>
+                                    <td class="p-5 text-center text-green-600 font-bold">15 000 МРП</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+
     <div id="arbitrator-modal"
         class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md hidden">
         <div class="bg-white w-full max-w-3xl rounded-[2.5rem] shadow-2xl overflow-hidden relative">
@@ -645,7 +960,7 @@
                     data-i18n="footer_sections">Разделы</h4>
                 <ul class="space-y-4 text-sm font-bold text-white">
                     <li class="hover:text-amber-500 transition cursor-pointer" onclick="switchView('home')"
-                        data-i18n="nav_about">О нас</li>
+                        data-i18n="nav_about">Об арбитраже</li>
                     <li class="hover:text-amber-500 transition cursor-pointer" onclick="switchView('registry')"
                         data-i18n="nav_arbitrators">Арбитры</li>
                 </ul>
