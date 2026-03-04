@@ -332,8 +332,12 @@ window.filterArbitrators = function () { window.renderArbitrators(document.getEl
 window.openArbitratorModal = function (id, name, pos, exp) {
     document.getElementById('modal-name').innerText = name;
     document.getElementById('modal-pos').innerText = pos;
-    document.getElementById('modal-exp').innerText = `${exp} лет`;
-    document.getElementById('modal-bio').innerText = `Профессиональный арбитр с многолетним опытом разрешения хозяйственных и корпоративных споров. Специализируется на гражданском праве.`;
+    const yearsLabel = window.currentLang === 'kz' ? 'жыл' : 'лет';
+    document.getElementById('modal-exp').innerText = `${exp} ${yearsLabel}`;
+    const bioText = window.currentLang === 'kz'
+        ? 'Шаруашылық және корпоративтік дауларды шешуде көпжылдық тәжірибесі бар кәсіби төреші. Азаматтық құқық саласында маманданған.'
+        : 'Профессиональный арбитр с многолетним опытом разрешения хозяйственных и корпоративных споров. Специализируется на гражданском праве.';
+    document.getElementById('modal-bio').innerText = bioText;
     document.getElementById('modal-img').src = `https://ui-avatars.com/api/?name=${name.split(' ').join('+')}&background=0F172A&color=fff&size=200`;
     document.getElementById('arbitrator-modal').classList.remove('hidden');
 }
