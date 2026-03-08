@@ -59,13 +59,31 @@
             <div class="container mx-auto px-4 flex justify-between items-end">
                 <div>
                     <h2 class="serif text-4xl mb-2">Панель управления</h2>
-                    <p class="text-slate-400">Входящие заявления (Firestore)</p>
+                    <p class="text-slate-400">Управление сайтом арбитража</p>
                 </div>
                 <a href="index.html"
                     class="text-xs uppercase font-black border-b-2 border-amber-500 pb-1 hover:text-amber-500 transition">Выход</a>
             </div>
         </section>
-        <section class="py-12 container mx-auto px-4">
+
+        <!-- Tab Navigation -->
+        <div class="bg-white border-b sticky top-[64px] z-30">
+            <div class="container mx-auto px-4">
+                <div class="flex gap-0">
+                    <button id="tab-claims" onclick="switchTab('claims')"
+                        class="admin-tab active-tab px-8 py-4 text-sm font-black uppercase tracking-widest border-b-4 border-amber-500 text-amber-600 transition">
+                        <i class="fas fa-inbox mr-2"></i>Заявления
+                    </button>
+                    <button id="tab-documents" onclick="switchTab('documents')"
+                        class="admin-tab px-8 py-4 text-sm font-black uppercase tracking-widest border-b-4 border-transparent text-slate-400 hover:text-slate-700 transition">
+                        <i class="fas fa-folder-open mr-2"></i>Документы
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLAIMS TAB -->
+        <section id="panel-claims" class="py-12 container mx-auto px-4">
             <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
@@ -85,9 +103,82 @@
                     нет.</div>
             </div>
         </section>
+
+        <!-- DOCUMENTS TAB -->
+        <section id="panel-documents" class="py-12 container mx-auto px-4" style="display:none">
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Upload form -->
+                <div class="bg-white rounded-[2rem] shadow-xl p-10 border border-slate-100">
+                    <h3 class="serif text-2xl text-navy mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 gold-gradient text-white rounded-xl flex items-center justify-center">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </span>
+                        Загрузить документ
+                    </h3>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-[10px] uppercase font-black text-slate-400 mb-2">Название
+                                документа</label>
+                            <input type="text" id="doc-title" placeholder="Например: Регламент 2024"
+                                class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-black text-slate-400 mb-2">Описание
+                                (необязательно)</label>
+                            <input type="text" id="doc-desc" placeholder="Краткое описание"
+                                class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-black text-slate-400 mb-2">Ссылка на файл
+                                (URL)</label>
+                            <input type="url" id="doc-url" placeholder="https://..."
+                                class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            <p class="text-[10px] text-slate-400 mt-2"><i class="fas fa-info-circle mr-1"></i>Загрузите
+                                файл на Google Drive, Dropbox или любой другой хостинг и вставьте прямую ссылку.</p>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-black text-slate-400 mb-2">Тип файла</label>
+                            <select id="doc-type"
+                                class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
+                                <option value="pdf">PDF</option>
+                                <option value="docx">DOCX</option>
+                                <option value="xlsx">XLSX</option>
+                                <option value="other">Другой</option>
+                            </select>
+                        </div>
+                        <button onclick="uploadDocument()"
+                            class="w-full gold-gradient text-white py-4 rounded-xl font-black shadow-lg hover:scale-[1.02] transition uppercase tracking-widest text-sm">
+                            <i class="fas fa-plus mr-2"></i>Добавить документ
+                        </button>
+                        <div id="doc-success"
+                            class="hidden text-green-600 text-sm font-bold text-center bg-green-50 p-4 rounded-xl">
+                            <i class="fas fa-check-circle mr-1"></i>Документ успешно добавлен!
+                        </div>
+                        <div id="doc-error"
+                            class="hidden text-red-500 text-sm font-bold text-center bg-red-50 p-4 rounded-xl">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Existing documents list -->
+                <div class="bg-white rounded-[2rem] shadow-xl p-10 border border-slate-100">
+                    <h3 class="serif text-2xl text-navy mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-list"></i>
+                        </span>
+                        Загруженные документы
+                    </h3>
+                    <div id="admin-docs-list" class="space-y-4">
+                        <div class="text-slate-400 text-sm italic py-8 text-center" id="admin-docs-empty">Документов
+                            пока нет.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Firebase Compat SDK (БЕЗ main.js — он не нужен на этой странице) -->
+    <!-- Firebase Compat SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -107,25 +198,18 @@
         const db = firebase.firestore();
         const auth = firebase.auth();
 
-        // Анонимная авторизация — нужна для Firestore
+        // Анонимная авторизация
         auth.signInAnonymously().catch(err => console.error("Auth error:", err));
 
-        // ── После авторизации — загружаем заявки ──────────────
+        // ── Загружаем заявки ──────────────────────────────────
         auth.onAuthStateChanged((user) => {
             if (!user) return;
 
             db.collection("claims").onSnapshot((snap) => {
                 const body = document.getElementById('claimsTableBody');
                 const empty = document.getElementById('noClaims');
-
-                if (snap.empty) {
-                    body.innerHTML = '';
-                    empty.style.display = 'block';
-                    return;
-                }
-
+                if (snap.empty) { body.innerHTML = ''; empty.style.display = 'block'; return; }
                 empty.style.display = 'none';
-
                 let rows = [];
                 snap.forEach(doc => {
                     const d = doc.data();
@@ -138,9 +222,7 @@
                         time: d.timestamp ? d.timestamp.seconds : 0
                     });
                 });
-
                 rows.sort((a, b) => b.time - a.time);
-
                 body.innerHTML = rows.map(r => `
                     <tr class="border-b hover:bg-slate-50 transition">
                         <td class="p-8 text-slate-400 font-mono">${r.date}</td>
@@ -155,9 +237,93 @@
                 document.getElementById('claimsTableBody').innerHTML =
                     `<tr><td colspan="5" class="p-8 text-red-400 text-center font-bold">Ошибка: ${error.message}</td></tr>`;
             });
+
+            // ── Загружаем документы ───────────────────────────
+            db.collection("documents").orderBy("timestamp", "desc").onSnapshot((snap) => {
+                renderAdminDocs(snap);
+            });
         });
 
-        // ── Авторизация Admin ─────────────────────────────────
+        // ── Render admin doc list ─────────────────────────────
+        function renderAdminDocs(snap) {
+            const list = document.getElementById('admin-docs-list');
+            const empty = document.getElementById('admin-docs-empty');
+            if (snap.empty) { list.innerHTML = ''; list.appendChild(empty); empty.style.display = 'block'; return; }
+            empty.style.display = 'none';
+            const iconMap = { pdf: 'fas fa-file-pdf text-red-500', docx: 'far fa-file-word text-blue-500', xlsx: 'fas fa-file-excel text-green-600', other: 'fas fa-file text-slate-500' };
+            list.innerHTML = '';
+            snap.forEach(doc => {
+                const d = doc.data();
+                const icon = iconMap[d.type] || iconMap.other;
+                const div = document.createElement('div');
+                div.className = 'flex items-center gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl';
+                div.innerHTML = `
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                        <i class="${icon} text-lg"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold text-slate-700 text-sm truncate">${d.title}</p>
+                        ${d.desc ? `<p class="text-slate-400 text-xs">${d.desc}</p>` : ''}
+                        <p class="text-[10px] uppercase font-bold text-amber-600 mt-0.5">${d.type?.toUpperCase()}</p>
+                    </div>
+                    <div class="flex gap-2 shrink-0">
+                        <a href="${d.url}" target="_blank" class="w-8 h-8 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-white transition" title="Открыть"><i class="fas fa-external-link-alt text-xs"></i></a>
+                        <button onclick="deleteDocument('${doc.id}')" class="w-8 h-8 bg-red-50 text-red-400 rounded-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition" title="Удалить"><i class="fas fa-trash text-xs"></i></button>
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        // ── Upload document ───────────────────────────────────
+        function uploadDocument() {
+            const title = document.getElementById('doc-title').value.trim();
+            const desc = document.getElementById('doc-desc').value.trim();
+            const url = document.getElementById('doc-url').value.trim();
+            const type = document.getElementById('doc-type').value;
+
+            const errEl = document.getElementById('doc-error');
+            const sucEl = document.getElementById('doc-success');
+            errEl.classList.add('hidden');
+            sucEl.classList.add('hidden');
+
+            if (!title) { errEl.textContent = 'Укажите название документа.'; errEl.classList.remove('hidden'); return; }
+            if (!url) { errEl.textContent = 'Укажите ссылку на файл.'; errEl.classList.remove('hidden'); return; }
+
+            db.collection("documents").add({
+                title, desc, url, type,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                sucEl.classList.remove('hidden');
+                document.getElementById('doc-title').value = '';
+                document.getElementById('doc-desc').value = '';
+                document.getElementById('doc-url').value = '';
+                document.getElementById('doc-type').value = 'pdf';
+                setTimeout(() => sucEl.classList.add('hidden'), 3000);
+            }).catch(err => {
+                errEl.textContent = 'Ошибка: ' + err.message;
+                errEl.classList.remove('hidden');
+            });
+        }
+
+        // ── Delete document ───────────────────────────────────
+        function deleteDocument(id) {
+            if (!confirm('Удалить этот документ?')) return;
+            db.collection("documents").doc(id).delete();
+        }
+
+        // ── Tab switching ─────────────────────────────────────
+        function switchTab(tab) {
+            document.getElementById('panel-claims').style.display = tab === 'claims' ? '' : 'none';
+            document.getElementById('panel-documents').style.display = tab === 'documents' ? '' : 'none';
+
+            document.getElementById('tab-claims').className = 'admin-tab px-8 py-4 text-sm font-black uppercase tracking-widest border-b-4 transition ' +
+                (tab === 'claims' ? 'border-amber-500 text-amber-600' : 'border-transparent text-slate-400 hover:text-slate-700');
+            document.getElementById('tab-documents').className = 'admin-tab px-8 py-4 text-sm font-black uppercase tracking-widest border-b-4 transition ' +
+                (tab === 'documents' ? 'border-amber-500 text-amber-600' : 'border-transparent text-slate-400 hover:text-slate-700');
+        }
+
+        // ── Admin auth ────────────────────────────────────────
         const ADMIN_PASS = "admin123";
 
         function checkAdminPassword() {

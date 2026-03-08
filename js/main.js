@@ -44,7 +44,7 @@ window.currentLang = 'ru';
 window.translations = {
     'ru': {
         'brand_name': 'Первый Экономический', 'brand_sub': 'Арбитраж',
-        'nav_about': 'О нас', 'nav_arbitrators': 'Арбитры', 'nav_calc': 'Калькулятор', 'nav_contacts': 'Контакты', 'nav_apply': 'Подать заявку',
+        'nav_about': 'О нас', 'nav_arbitrators': 'Арбитры', 'nav_documents': 'Документы', 'nav_contacts': 'Контакты', 'nav_apply': 'Подать заявку',
         'hero_title': 'Если спор неизбежен, <br><span class="text-amber-500">выигрывайте его у нас!</span>',
         'hero_desc': 'Разрешение коммерческих споров в рамках правового поля с полным соблюдением принципов конфиденциальности.',
         'btn_apply': 'Подать иск онлайн', 'btn_clause': 'Арбитражная оговорка',
@@ -77,6 +77,10 @@ window.translations = {
         'reg_rules': 'Регламент',
         'reg_desc': 'Ознакомьтесь с правилами работы арбитража',
         'btn_pdf': 'Скачать PDF',
+        'docs_page_desc': 'Официальные документы и материалы арбитража',
+        'docs_section_static': 'Шаблоны и документы',
+        'docs_section_uploads': 'Загруженные документы',
+        'docs_empty': 'Документы ещё не загружены.',
         'faq_title': 'Часто задаваемые вопросы',
         'faq1_q': 'Обязательно ли решение арбитража?',
         'faq1_a': 'Да, решение арбитража окончательно, вступает в силу немедленно после его оглашения и обязательно для исполнения сторонами.',
@@ -178,7 +182,7 @@ window.translations = {
     },
     'kz': {
         'brand_name': 'Бірінші Экономикалық', 'brand_sub': 'Төрелік',
-        'nav_about': 'Біз туралы', 'nav_arbitrators': 'Төрешілер', 'nav_calc': 'Калькулятор', 'nav_contacts': 'Байланыс', 'nav_apply': 'Өтінім беру',
+        'nav_about': 'Біз туралы', 'nav_arbitrators': 'Төрешілер', 'nav_documents': 'Құжаттар', 'nav_contacts': 'Байланыс', 'nav_apply': 'Өтінім беру',
         'hero_title': 'Егер дау туындаса — <br><span class="text-amber-500">бізде жеңіңіз!</span>',
         'hero_desc': 'Коммерциялық дауларды құқықтық аяда, құпиялылық принциптерін толық сақтай отырып шешу.',
         'btn_apply': 'Онлайн талап қою', 'btn_clause': 'Төрелік ескертпе',
@@ -211,6 +215,10 @@ window.translations = {
         'reg_rules': 'Регламент',
         'reg_desc': 'Төреліктің жұмыс ережелерімен танысыңыз',
         'btn_pdf': 'PDF жүктеу',
+        'docs_page_desc': 'Төреліктің ресми құжаттары мен материалдары',
+        'docs_section_static': 'Үлгілер мен құжаттар',
+        'docs_section_uploads': 'Жүктелген құжаттар',
+        'docs_empty': 'Құжаттар әлі жүктелмеген.',
         'faq_title': 'Жиі қойылатын сұрақтар',
         'faq1_q': 'Төрелік шешімі міндетті ме?',
         'faq1_a': 'Иә, төрелік шешімі түпкілікті, ол жарияланғаннан кейін дереу күшіне енеді және тараптар үшін орындалуы міндетті.',
@@ -332,6 +340,7 @@ window.switchView = function (view) {
     document.querySelectorAll('.view-content').forEach(v => v.classList.add('view-hidden'));
     document.getElementById(view + '-view').classList.remove('view-hidden');
     if (view === 'registry') window.renderArbitrators();
+    if (view === 'documents') window.loadDocuments();
     window.scrollTo(0, 0);
 }
 
@@ -369,13 +378,60 @@ window.openArbitratorModal = function (id, name, pos, exp) {
 }
 
 window.calculateFee = function () {
-    const sum = parseFloat(document.getElementById('claimSum').value) || 0;
+    const sum = parseFloat(document.getElementById('claimSum')?.value) || 0;
     let fee = (sum <= 1600000) ? sum * 0.06 : (sum <= 5000000) ? sum * 0.05 : (sum <= 10000000) ? sum * 0.04 : sum * 0.03;
     if (sum <= 5000000 && fee < 300000) fee = 300000;
-    document.getElementById('feeResult').innerText = fee.toLocaleString('ru-RU') + ' KZT';
+    const el = document.getElementById('feeResult');
+    if (el) el.innerText = fee.toLocaleString('ru-RU') + ' KZT';
 }
 
-window.onload = window.calculateFee;
+window.toggleClauseDoc = function () {
+    const text = document.getElementById('clause-doc-text');
+    const icon = document.getElementById('clause-doc-chevron');
+    if (text) text.classList.toggle('hidden');
+    if (icon) icon.classList.toggle('rotate-180');
+}
+
+// Load documents from Firestore and append into the unified doc list
+window.loadDocuments = function () {
+    const list = document.getElementById('all-docs-list');
+    const empty = document.getElementById('docs-empty-state');
+    if (!list) return;
+
+    const iconMap = {
+        pdf: { icon: 'fas fa-file-pdf', bg: 'bg-red-50', color: 'text-red-500' },
+        docx: { icon: 'far fa-file-word', bg: 'bg-blue-50', color: 'text-blue-500' },
+        xlsx: { icon: 'fas fa-file-excel', bg: 'bg-green-50', color: 'text-green-600' },
+        other: { icon: 'fas fa-file', bg: 'bg-slate-100', color: 'text-slate-500' }
+    };
+
+    if (typeof firebase === 'undefined') return;
+    const db = firebase.firestore();
+    db.collection('documents').orderBy('timestamp', 'desc').get().then(snap => {
+        // Remove the empty-state placeholder regardless
+        if (empty) empty.remove();
+        if (snap.empty) return;
+        snap.forEach(doc => {
+            const d = doc.data();
+            const t = iconMap[d.type] || iconMap.other;
+            const card = document.createElement('a');
+            card.href = d.url || '#';
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.className = 'doc-card';
+            card.innerHTML = `
+                <div class="doc-icon ${t.bg} ${t.color}"><i class="${t.icon}"></i></div>
+                <div class="flex-1">
+                    <p class="font-bold text-slate-700">${d.title}</p>
+                    ${d.desc ? `<p class="text-xs text-slate-400 mt-0.5">${d.desc}</p>` : ''}
+                    <p class="text-[10px] uppercase font-bold text-amber-600 mt-1">${(d.type || 'OTHER').toUpperCase()}</p>
+                </div>
+                <i class="fas fa-download text-slate-400"></i>
+            `;
+            list.appendChild(card);
+        });
+    }).catch(err => console.error('Docs load error:', err));
+}
 document.getElementById('adminPassword')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') window.checkAdminPassword(); });
 
 // ── Scroll Reveal ──────────────────────────────────────────────────────
