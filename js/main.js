@@ -540,7 +540,7 @@ window.toggleClauseDoc = function () {
 
 // Load documents from Firestore and append into the unified doc list
 window.loadDocuments = function () {
-    const list = document.getElementById('all-docs-list');
+    const list = document.getElementById('dynamic-docs-list') || document.getElementById('all-docs-list');
     const empty = document.getElementById('docs-empty-state');
     if (!list) return;
 
@@ -554,9 +554,16 @@ window.loadDocuments = function () {
     if (typeof firebase === 'undefined') return;
     const db = firebase.firestore();
     db.collection('documents').orderBy('timestamp', 'desc').get().then(snap => {
-        // Remove the empty-state placeholder regardless
-        if (empty) empty.remove();
-        if (snap.empty) return;
+        // Clear previous entries to prevent duplication on language switch
+        list.innerHTML = '';
+
+        if (snap.empty) {
+            if (empty) empty.style.display = 'block';
+            return;
+        }
+
+        if (empty) empty.style.display = 'none';
+
         snap.forEach(doc => {
             const d = doc.data();
             const t = iconMap[d.type] || iconMap.other;
