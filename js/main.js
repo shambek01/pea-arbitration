@@ -477,8 +477,8 @@ window.setLanguage = function (lang) {
 
     if (!document.getElementById('registry-view').classList.contains('view-hidden')) window.renderArbitrators();
 
-    // Also re-render list of documents to refresh english titles
-    if (!document.getElementById('documents-view').classList.contains('view-hidden')) window.loadDocuments();
+    // Re-render list of documents immediately behind scenes
+    window.renderDocumentsList();
 }
 
 window.switchView = function (view) {
@@ -586,9 +586,11 @@ window.renderDocumentsList = function () {
     });
 }
 
-// Load documents from Firestore and append into the unified doc list
-window.loadDocuments = function () {
-    if (typeof firebase === 'undefined') return;
+window.preloadDocuments = function () {
+    if (typeof firebase === 'undefined') {
+        setTimeout(window.preloadDocuments, 500);
+        return;
+    }
 
     if (!window.docsListenerInitialized) {
         window.docsListenerInitialized = true;
@@ -603,9 +605,15 @@ window.loadDocuments = function () {
             });
             window.renderDocumentsList();
         }, err => console.error('Docs load error:', err));
-    } else {
-        window.renderDocumentsList();
     }
+}
+
+// Start preloading immediately
+window.preloadDocuments();
+
+// Load documents from Firestore and append into the unified doc list
+window.loadDocuments = function () {
+    window.renderDocumentsList();
 }
 document.getElementById('adminPassword')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') window.checkAdminPassword(); });
 
