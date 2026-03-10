@@ -43,9 +43,9 @@ window.currentLang = 'ru';
 
 window.translations = {
     'ru': {
-        'brand_name': 'Первый Экономический', 'brand_sub': 'Арбитраж',
+        'brand_name': 'Центрально-Евразийский', 'brand_sub': 'Арбитражный суд',
         'nav_about': 'О нас', 'nav_arbitrators': 'Арбитры', 'nav_documents': 'Документы', 'nav_contacts': 'Контакты', 'nav_apply': 'Подать заявку',
-        'hero_title': 'Если спор неизбежен, <br><span class="text-amber-500">выигрывайте его у нас!</span>',
+        'hero_title': 'Справедливое разрешение споров <br><span class="text-amber-500">для вашего бизнеса</span>',
         'hero_desc': 'Разрешение коммерческих споров в рамках правового поля с полным соблюдением принципов конфиденциальности.',
         'btn_apply': 'Подать иск онлайн', 'btn_clause': 'Арбитражная оговорка',
         'stat_arbitrators': 'Арбитров в реестре', 'stat_cases': 'Рассмотренных дел', 'stat_cancelled': 'Отмененных решений',
@@ -164,7 +164,7 @@ window.translations = {
         'clause_text': 'Все споры, разногласия или требования, возникшие из настоящего договора (соглашения, контракта), либо в связи с ним, подлежат разрешению в постоянно действующем арбитраже – ТОО «Центрально-Азиатский экономический арбитраж» в соответствии с его Регламентом. Состав арбитража будет включать одного арбитра. Язык арбитражного разбирательства – русский.',
         'clause_info': 'Для включения в уже заключённый договор необходимо оформить дополнительное соглашение с данной оговоркой.',
         'modal_bio_title': 'Биография',
-        'footer_copy': '© 2024 Первый Экономический Арбитраж. Все права защищены.',
+        'footer_copy': '© 2024 Центрально-Евразийский арбитражный суд. Все права защищены.',
         'clause_info_2': 'Для включения в уже заключённый договор необходимо оформить дополнительное соглашение с данной оговоркой.',
         'breadcrumb_home': 'Главная',
         'breadcrumb_about': 'О нас',
@@ -181,9 +181,9 @@ window.translations = {
         'btn_close': 'Понятно'
     },
     'kz': {
-        'brand_name': 'Бірінші Экономикалық', 'brand_sub': 'Төрелік',
+        'brand_name': 'Орталық Еуразиялық', 'brand_sub': 'Төрелік соты',
         'nav_about': 'Біз туралы', 'nav_arbitrators': 'Төрешілер', 'nav_documents': 'Құжаттар', 'nav_contacts': 'Байланыс', 'nav_apply': 'Өтінім беру',
-        'hero_title': 'Егер дау туындаса — <br><span class="text-amber-500">бізде жеңіңіз!</span>',
+        'hero_title': 'Сіздің бизнесіңіз үшін <br><span class="text-amber-500">дауларды әділ шешу</span>',
         'hero_desc': 'Коммерциялық дауларды құқықтық аяда, құпиялылық принциптерін толық сақтай отырып шешу.',
         'btn_apply': 'Онлайн талап қою', 'btn_clause': 'Төрелік ескертпе',
         'stat_arbitrators': 'Тізілімдегі төрешілер', 'stat_cases': 'Қаралған істер', 'stat_cancelled': 'Күші жойылған жоқ',
@@ -302,7 +302,7 @@ window.translations = {
         'clause_text': 'Осы шарттан (келісімнен, келісімшарттан) немесе оған байланысты туындаған барлық даулар, келіспеушіліктер немесе талаптар тұрақты жұмыс істейтін төрелік – «Орталық Азия экономикалық төрелігі» ЖШС-нде оның Регламентіне сәйкес шешілуге жатады. Төрелік құрамына бір төреші кіреді. Төрелік талқылау тілі – орыс тілі.',
         'clause_info': 'Бұрын жасалған шартқа қосу үшін осы ескертпемен қосымша келісім жасасу қажет.',
         'modal_bio_title': 'Өмірбаян',
-        'footer_copy': '© 2024 Бірінші Экономикалық Төрелік. Барлық құқықтар қорғалған.',
+        'footer_copy': '© 2024 Орталық Еуразиялық төрелік соты. Барлық құқықтар қорғалған.',
         'clause_info_2': 'Бұрын жасалған шартқа қосу үшін осы ескертпемен қосымша келісім жасасу қажет.',
         'breadcrumb_home': 'Басты бет',
         'breadcrumb_about': 'Біз туралы',
@@ -317,6 +317,144 @@ window.translations = {
         'td_terr_court': 'Тек сот орналасқан белгілі бір аумақта',
         'td_fee_arb': 'Талап сомасы неғұрлым көп болса, төрелік алым соғұрлым аз болады, ең көбі 15 000 АЕК',
         'btn_close': 'Түсінікті'
+    },
+    'en': {
+        'brand_name': 'Central Eurasian', 'brand_sub': 'Arbitration Court',
+        'nav_about': 'About', 'nav_arbitrators': 'Arbitrators', 'nav_documents': 'Documents', 'nav_contacts': 'Contacts', 'nav_apply': 'Submit claim',
+        'hero_title': 'Fair dispute resolution <br><span class="text-amber-500">for your business</span>',
+        'hero_desc': 'Resolution of commercial disputes within the legal framework with full observance of confidentiality principles.',
+        'btn_apply': 'Apply online', 'btn_clause': 'Arbitration clause',
+        'stat_arbitrators': 'Arbitrators in registry', 'stat_cases': 'Cases resolved', 'stat_cancelled': 'Cancelled decisions',
+        'features_title': 'Arbitration Advantages',
+        'f1_title': 'Efficiency', 'f1_desc': 'Case review takes from 7 to 14 days.',
+        'f2_title': 'Ready-made solutions', 'f2_desc': 'Document templates are available for free.',
+        'f3_title': 'Legal force', 'f3_desc': 'Decisions enter into force immediately.',
+        'calc_title': 'Fee Calculator', 'calc_label': 'Claim amount (KZT)', 'calc_result_label': 'Fee amount:',
+        'form_title': 'Submit Application', 'form_desc': 'Fill out the form to start the process.',
+        'label_name': 'Full Name / Organization', 'label_phone': 'Phone', 'label_email': 'E-mail', 'label_sum': 'Claim amount', 'label_message': 'Subject of dispute',
+        'btn_submit_form': 'Submit application', 'success_title': 'Application accepted', 'success_desc': 'Data saved in the system.',
+        'arb_title': 'Our Arbitrators', 'arb_view_all': 'All 71 arbitrators', 'lib_title': 'Documents', 'address': 'Astana, Imanov st 13, office 709/1',
+        'footer_admin': 'Administration',
+        'how_works_title': 'How it works',
+        'how_works_desc': 'A simple process of dispute resolution from application to result',
+        'step1_title': '1. File a claim',
+        'step1_desc': 'Fill out the online form or send documents by email',
+        'step2_title': '2. Select arbitrator',
+        'step2_desc': 'Parties select an independent arbitrator from our registry',
+        'step3_title': '3. Consideration',
+        'step3_desc': 'Prompt review of the case maintaining confidentiality',
+        'step4_title': '4. Decision',
+        'step4_desc': 'Issuing a final legally binding decision',
+        'form_storage': 'Secure storage',
+        'lib_desc_full': 'We have prepared all necessary templates for your protection.',
+        'doc1': 'Arbitration clause',
+        'doc1_hint': 'Click to view the clause text',
+        'doc2': 'Sample claim',
+        'reg_rules': 'Rules',
+        'reg_desc': 'Read the rules of the arbitration',
+        'btn_pdf': 'Download PDF',
+        'docs_page_desc': 'Official documents and materials of the arbitration',
+        'docs_section_static': 'Templates and documents',
+        'docs_section_uploads': 'Uploaded documents',
+        'docs_empty': 'Documents not uploaded yet.',
+        'faq_title': 'Frequently Asked Questions',
+        'faq1_q': 'Is the arbitration award binding?',
+        'faq1_a': 'Yes, the arbitration award is final, enters into force immediately upon its announcement and is binding on the parties.',
+        'faq2_q': 'How long does a case review take?',
+        'faq2_a': 'On average, reviewing a case in our arbitration takes 7 to 14 days. This is much faster than in state courts.',
+        'faq3_q': 'Can the decision be appealed?',
+        'faq3_a': 'The arbitration decision is final and not subject to appeal, which saves time and money for the parties.',
+        'about_title': 'About Arbitration',
+        'about_desc': 'Everything you need to know about arbitration proceedings',
+        'about_q1': 'What is arbitration',
+        'about_a1_1': 'Arbitration is a non-governmental court established specifically to hear a particular civil dispute or a permanent arbitration.',
+        'about_a1_2': 'Permanent arbitrations can be established by individuals and/or legal entities in accordance with the legislation of the Republic of Kazakhstan.',
+        'about_a1_3': 'An arbitration for hearing a specific dispute is created by the parties and operates until this dispute is resolved or until the parties decide to refer the dispute to court.',
+        'about_q2': 'Who can apply to arbitration',
+        'about_a2_1': 'Parties in arbitration can be individuals and/or legal entities, regardless of their place of residence or location in Kazakhstan or abroad. A dispute can be referred to arbitration if there is an arbitration agreement concluded between the parties regarding disputes that have arisen or may arise.',
+        'about_a2_2': 'An arbitration agreement regarding a dispute pending in court may be concluded before the court renders a decision. In this case, the court dismisses the claim.',
+        'about_a2_3': 'An arbitration agreement is concluded in writing. It may be concluded as an arbitration clause included in a civil contract.',
+        'about_q3': 'Form and content of the arbitration agreement',
+        'about_a3_1': 'An arbitration agreement is considered to be concluded in writing if it is contained as an arbitration clause in a document signed by the parties or concluded by exchanging letters, telegrams, faxes, electronic documents, etc.',
+        'about_a3_2': 'An arbitration agreement is also considered concluded in writing if it is concluded by exchanging a statement of claim and a defense, in which one party claims the existence of an agreement and the other does not object.',
+        'about_a3_3': 'A reference in a contract to a document containing an arbitration clause constitutes an arbitration agreement provided the contract is in writing and the reference makes the clause part of the contract.',
+        'about_a3_info': 'To include an arbitration clause in an already concluded contract, it is necessary to sign an additional agreement providing for the above arbitration clause.',
+        'about_q4': 'What disputes does arbitration consider?',
+        'about_a4_info': 'Arbitration is entitled to consider disputes arising from civil legal relations between individuals and/or legal entities:',
+        'about_a4_li1': 'property disputes;',
+        'about_a4_li2': 'disputes arising from personal non-property relations associated with property relations.',
+        'about_q5': 'Disputes not subject to arbitration:',
+        'about_a5_li1': 'affecting the interests of minors, incapacitated persons, or third parties not part of the arbitration agreement;',
+        'about_a5_li2': 'disputes between second-tier banks;',
+        'about_a5_li3': 'on rehabilitation and bankruptcy;',
+        'about_a5_li4': 'between subjects of natural monopolies and their consumers;',
+        'about_a5_li5': 'between government bodies and subjects of the quasi-public sector;',
+        'about_a5_li6': 'arising from personal non-property relations not related to property.',
+        'about_q6': 'Advantages of arbitration over state court',
+        'about_a6_li1': 'The disputing parties have the right to independently determine the rules by which the arbitration will hear the dispute.',
+        'about_a6_li2': 'The parties have the right to independently choose the place and language of the arbitration.',
+        'about_a6_li3': 'The parties have the right to independently choose arbitrators.',
+        'about_a6_li4': 'Confidentiality of the proceedings.',
+        'about_a6_li5': 'Speed and efficiency of the process.',
+        'about_a6_li6': 'The arbitration award is final and cannot be reviewed on its merits.',
+        'about_a6_li7': 'An arbitration award is easier to enforce in a foreign state due to the New York Convention on the Recognition and Enforcement of Foreign Arbitral Awards (1958).',
+        'table1_title': 'Comparison of Court and Arbitration',
+        'th_comp': 'Comparison',
+        'th_court': 'Court',
+        'th_arb': 'Arbitration',
+        'td_term_title': 'Case review period',
+        'td_term_court': '3 months',
+        'td_term_arb': '1 month, maximum 2 months',
+        'td_force_title': 'Entry into force',
+        'td_force_court': '1 month after drafting in final form',
+        'td_force_arb': 'On the day of drafting the final decision',
+        'td_cancel_title': 'Grounds for cancellation',
+        'td_cancel_court': 'For any reason',
+        'td_cancel_arb': 'Only procedural violations, without reviewing the merits of the case',
+        'td_terr_title': 'Territorial jurisdiction',
+        'td_terr_court': 'Only in a specific territory where the court is located',
+        'td_terr_arb': 'Throughout the entire territory of Kazakhstan',
+        'td_fee_title': 'Amount of state fee and arbitration fee',
+        'td_fee_court': '3%, maximum 20,000 MCI',
+        'td_fee_arb': 'The higher the claim amount, the lower the arbitration fee, maximum 15,000 MCI',
+        'table2_title': 'Comparison of state fee and arbitration fee',
+        'th2_1': 'Claim price (tenge)',
+        'th2_2': 'State fee (tenge)',
+        'th2_3': 'Arbitration fee (tenge)',
+        'td2_last': 'from 650,000 MCI and more',
+        'arb_registry_title': 'Registry of Arbitrators',
+        'val_search': 'Search arbitrator by last name...',
+        'search_not_found': 'Nothing found for your request',
+        'office_title': 'Our Office',
+        'label_address': 'Address',
+        'address': 'Astana, Kabanbay Batyr ave, 53, block D2',
+        'address_br': 'Astana, Kabanbay Batyr ave, 53,<br>block D2',
+        'label_working_hours': 'Working Hours',
+        'working_hours': 'Mon-Fri: 09:00 - 18:00',
+        'label_phone_short': 'Phone',
+        'admin_login_title': 'Admin Login',
+        'admin_pass_placeholder': 'Password',
+        'admin_pass_error': 'Error. Invalid password.',
+        'admin_enter': 'Login',
+        'admin_cancel': 'Cancel',
+        'clause_text': 'All disputes, disagreements, or claims arising out of or in connection with this contract (agreement) shall be resolved by the permanent arbitration – "Central Asian Economic Arbitration" LLP in accordance with its Rules. The arbitral tribunal will consist of one arbitrator. The language of the arbitral proceedings shall be Russian.',
+        'clause_info': 'To include this in an already concluded contract, an additional agreement with this clause must be issued.',
+        'modal_bio_title': 'Biography',
+        'footer_copy': '© 2024 Central Eurasian Arbitration Court. All rights reserved.',
+        'clause_info_2': 'To include this in an already concluded contract, an additional agreement with this clause must be issued.',
+        'breadcrumb_home': 'Home',
+        'breadcrumb_about': 'About Us',
+        'breadcrumb_registry': 'Arbitrators',
+        'footer_contacts': 'Contacts',
+        'footer_sections': 'Sections',
+        'btn_pdf_download': 'Download PDF',
+        'modal_exp_label': 'Experience:',
+        'table2_title_full': 'Comparison of state fee and arbitration fee',
+        'td_force_court': '1 month after drafting in final form',
+        'td_cancel_arb': 'Only procedural violations, without reviewing the merits of the case',
+        'td_terr_court': 'Only in a specific territory where the court is located',
+        'td_fee_arb': 'The higher the claim amount, the lower the arbitration fee, maximum 15,000 MCI',
+        'btn_close': 'Got it'
     }
 };
 
@@ -332,7 +470,15 @@ window.setLanguage = function (lang) {
     });
     document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
     document.getElementById('lang-kz').classList.toggle('active', lang === 'kz');
+
+    // Add EN language trigger safely
+    const langEn = document.getElementById('lang-en');
+    if (langEn) langEn.classList.toggle('active', lang === 'en');
+
     if (!document.getElementById('registry-view').classList.contains('view-hidden')) window.renderArbitrators();
+
+    // Also re-render list of documents to refresh english titles
+    if (!document.getElementById('documents-view').classList.contains('view-hidden')) window.loadDocuments();
 }
 
 window.switchView = function (view) {
@@ -414,6 +560,7 @@ window.loadDocuments = function () {
         snap.forEach(doc => {
             const d = doc.data();
             const t = iconMap[d.type] || iconMap.other;
+            const displayTitle = (window.currentLang === 'en' && d.titleEn) ? d.titleEn : d.title;
             const card = document.createElement('a');
             card.href = d.url || '#';
             card.target = '_blank';
@@ -422,7 +569,7 @@ window.loadDocuments = function () {
             card.innerHTML = `
                 <div class="doc-icon ${t.bg} ${t.color}"><i class="${t.icon}"></i></div>
                 <div class="flex-1">
-                    <p class="font-bold text-slate-700">${d.title}</p>
+                    <p class="font-bold text-slate-700">${displayTitle}</p>
                     ${d.desc ? `<p class="text-xs text-slate-400 mt-0.5">${d.desc}</p>` : ''}
                     <p class="text-[10px] uppercase font-bold text-amber-600 mt-1">${(d.type || 'OTHER').toUpperCase()}</p>
                 </div>

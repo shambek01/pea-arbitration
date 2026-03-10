@@ -14,7 +14,7 @@ body {
 
 /* ── Brand Colors ─────────────────────────────────── */
 .gold-gradient {
-    background: linear-gradient(135deg, #C9A227 0%, #E8C547 50%, #B8910C 100%);
+    background: linear-gradient(135deg, var(--orange-base) 0%, var(--orange-hover) 100%);
 }
 
 /* Primary accent — royal blue */
@@ -94,11 +94,11 @@ header {
 
     0%,
     100% {
-        box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.4);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
     }
 
     50% {
-        box-shadow: 0 0 0 16px rgba(201, 162, 39, 0);
+        box-shadow: 0 0 0 16px rgba(245, 158, 11, 0);
     }
 }
 
@@ -166,7 +166,7 @@ header {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
     transition: opacity 0.3s;
 }
 
@@ -193,7 +193,7 @@ header {
 .feature-card:hover {
     transform: translateX(6px);
     box-shadow: 0 8px 32px rgba(29, 78, 143, 0.10) !important;
-    border-color: #C9A227 !important;
+    border-color: var(--orange-base) !important;
 }
 
 .feature-icon {
@@ -202,7 +202,7 @@ header {
 
 .feature-card:hover .feature-icon {
     transform: scale(1.15) rotate(-5deg);
-    background-color: #C9A227 !important;
+    background-color: var(--orange-base) !important;
 }
 
 .feature-card:hover .feature-icon i {
@@ -216,7 +216,7 @@ header {
 
 .group:hover .arb-avatar {
     transform: scale(1.08);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.35);
 }
 
 .arb-card-name {
@@ -224,7 +224,7 @@ header {
 }
 
 .group:hover .arb-card-name {
-    color: #D4AF37;
+    color: var(--orange-base);
 }
 
 /* ── Buttons ──────────────────────────────────────── */
@@ -245,7 +245,7 @@ header {
 
 .btn-gold:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(201, 162, 39, 0.45);
+    box-shadow: 0 12px 32px rgba(245, 158, 11, 0.45);
 }
 
 .btn-gold:hover::after {
@@ -263,7 +263,8 @@ header {
 
 .form-input:focus {
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.2);
+    border-color: var(--orange-base);
 }
 
 /* ── Footer links ─────────────────────────────────── */
@@ -281,8 +282,8 @@ footer li:hover {
 }
 
 .lang-link.active {
-    color: #C9A227;
-    border-bottom: 2px solid #C9A227;
+    color: var(--orange-base);
+    border-bottom: 2px solid var(--orange-base);
 }
 
 /* ── View transitions ─────────────────────────────── */
@@ -348,7 +349,7 @@ footer li:hover {
 }
 
 .gold-shimmer {
-    background: linear-gradient(90deg, #C9A227 25%, #F0D060 50%, #C9A227 75%);
+    background: linear-gradient(90deg, var(--orange-base) 25%, #FDE68A 50%, var(--orange-base) 75%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -368,7 +369,7 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background: #C9A227;
+    background: var(--orange-base);
     transition: width 0.3s ease;
 }
 
@@ -383,7 +384,8 @@ nav a:hover::after {
 
 /* ── Registry search ──────────────────────────────── */
 #registrySearch:focus {
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+    border-color: var(--orange-base);
 }
 
 /* ── Arbitrator grid cards ────────────────────────── */
@@ -420,7 +422,7 @@ nav a:hover::after {
 
 .doc-card:hover {
     box-shadow: 0 8px 24px rgba(30, 58, 95, 0.10);
-    border-color: #D4AF37;
+    border-color: var(--orange-base);
     transform: translateY(-2px);
 }
 
@@ -444,6 +446,8 @@ nav a:hover::after {
     --text-highlight: #047857;
     --accent: #10B981;
     --accent-hover: #059669;
+    --orange-base: #F59E0B;
+    --orange-hover: #D97706;
     --bg-main: #F6F8F6;
     --bg-hero: #DCFCE7;
 }
@@ -644,12 +648,15 @@ footer footer .border-slate-800 {
 }
 
 .border-amber-500 {
-    border-color: var(--accent) !important;
+    border-color: var(--orange-base) !important;
 }
 
-.text-accent,
 .text-accent {
-    color: var(--accent) !important;
+    color: var(--orange-base) !important;
+}
+
+.hover\:text-accent:hover {
+    color: var(--orange-hover) !important;
 }
 
 .bg-accent-light {
@@ -714,16 +721,17 @@ header button {
 
 /* Main Button: Bold Mustard/Sunshine Yellow for strong contrast against Forest */
 .btn-accent {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
-    /* Amber/Mustard */
+    background: var(--orange-base) !important;
     color: #FFFFFF !important;
-    box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.6) !important;
+    box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4) !important;
     border: none !important;
+    transition: all 0.3s ease !important;
 }
 
 .btn-accent:hover {
-    background: linear-gradient(135deg, #D97706 0%, #B45309 100%) !important;
+    background: var(--orange-hover) !important;
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.6) !important;
 }
 
 /* Secondary Button: Clean White wireframe */
@@ -742,15 +750,12 @@ header button {
 }
 
 .hero-highlight {
-    color: #FCD34D !important;
+    color: var(--orange-base) !important;
     font-weight: bold;
-    text-shadow: 0 0 20px rgba(245, 158, 11, 0.6) !important;
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
 }
 
-.text-accent,
-.hover\:text-accent:hover {
-    color: var(--accent) !important;
-}
+/* Cleaned up duplicate .text-accent */
 
 .bg-accent-light {
     background-color: var(--bg-hero) !important;
