@@ -240,81 +240,19 @@
         <!-- Document Library -->
         <section class="py-20 bg-white border-t border-slate-100">
             <div class="container mx-auto px-4">
-                <div
-                    class="max-w-6xl mx-auto bg-slate-50 rounded-[3rem] p-12 md:p-20 shadow-inner flex flex-col md:flex-row items-center justify-between gap-16">
-                    <div class="md:w-1/2">
-                        <h3 class="serif text-4xl mb-6 text-navy" data-i18n="lib_title">Документы</h3>
-                        <p class="text-slate-500 mb-10 text-lg leading-relaxed" data-i18n="lib_desc">Мы подготовили все
-                            необходимые шаблоны для вашей защиты.</p>
-                        <div class="grid gap-4">
-                            <!-- Arbitration Clause Card -->
-                            <div
-                                class="bg-white rounded-2xl shadow-sm border border-transparent hover:border-amber-200 transition overflow-hidden">
-                                <button onclick="toggleClause()" class="flex items-center gap-5 p-6 w-full text-left">
-                                    <div
-                                        class="w-14 h-14 bg-accent-light text-accent rounded-xl flex items-center justify-center text-2xl shrink-0">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <span class="font-bold text-slate-700" data-i18n="doc1">Арбитражная
-                                            оговорка</span>
-                                        <p class="text-xs text-slate-400 mt-1" data-i18n="doc1_hint">Нажмите, чтобы
-                                            посмотреть текст оговорки
-                                        </p>
-                                    </div>
-                                    <i id="clause-chevron"
-                                        class="fas fa-chevron-down text-slate-400 transition-transform"></i>
-                                </button>
-                                <div id="clause-text" class="hidden px-6 pb-6">
-                                    <div
-                                        class="bg-accent-light border border-amber-200 rounded-xl p-5 text-slate-700 italic text-sm leading-relaxed">
-                                        Все споры, разногласия или требования, возникшие из настоящего договора
-                                        (соглашения, контракта), либо в связи с ним, подлежат разрешению в постоянно
-                                        действующем арбитраже – ТОО «Центрально-Азиатский экономический арбитраж» в
-                                        соответствии с его Регламентом. Состав арбитража будет включать одного арбитра.
-                                        Язык арбитражного разбирательства – русский.
-                                    </div>
-                                    <p class="text-slate-400 text-xs mt-3"><i
-                                            class="fas fa-info-circle text-accent mr-1"></i><span
-                                            data-i18n="clause_info_2">Для включения в уже
-                                            заключённый договор необходимо оформить дополнительное соглашение с данной
-                                            оговоркой.</span></p>
-                                </div>
-                            </div>
-                            <a href="#"
-                                class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-transparent hover:border-amber-200">
-                                <div
-                                    class="w-14 h-14 bg-accent-light text-accent rounded-xl flex items-center justify-center text-2xl">
-                                    <i class="far fa-file-word"></i>
-                                </div>
-                                <span class="font-bold text-slate-700" data-i18n="doc2">Образец иска</span>
-                            </a>
-                        </div>
-                        <script>
-                            function toggleClause() {
-                                const text = document.getElementById('clause-text');
-                                const icon = document.getElementById('clause-chevron');
-                                text.classList.toggle('hidden');
-                                icon.classList.toggle('rotate-180');
-                            }
-                        </script>
+                <div class="max-w-5xl mx-auto bg-slate-50 rounded-[3rem] p-12 md:p-20 shadow-inner text-center">
+                    <div
+                        class="w-20 h-20 bg-accent-light text-accent rounded-full flex items-center justify-center text-4xl mx-auto mb-8 shadow-sm">
+                        <i class="fas fa-folder-open"></i>
                     </div>
-                    <div class="md:w-1/3 w-full">
-                        <div
-                            class="p-12 navy-blue-bg rounded-[2.5rem] text-white text-center shadow-2xl relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-32 h-32 bg-accent-light0/10 rounded-full -mr-16 -mt-16">
-                            </div>
-                            <i class="fas fa-file-invoice-dollar text-6xl text-accent mb-8"></i>
-                            <h4 class="font-bold text-2xl mb-4" data-i18n="reg_rules" data-i18n="reg_rules"
-                                data-i18n="reg_rules">Регламент</h4>
-                            <p class="text-slate-400 text-sm mb-10" data-i18n="reg_desc" data-i18n="reg_desc">
-                                Ознакомьтесь с правилами работы арбитража</p>
-                            <button data-i18n="btn_pdf_download"
-                                class="w-full primary-gradient py-4 rounded-xl font-black text-sm uppercase tracking-widest">Скачать
-                                PDF</button>
-                        </div>
-                    </div>
+                    <h3 class="serif text-4xl mb-4 text-navy" data-i18n="lib_title">Документы</h3>
+                    <p class="text-slate-500 mb-10 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="lib_desc_full">
+                        Мы подготовили все необходимые шаблоны для вашей защиты.</p>
+                    <button onclick="switchView('documents')"
+                        class="btn-accent primary-gradient text-white px-12 py-5 rounded-full text-lg font-bold shadow-lg shadow-amber-500/30 hover:shadow-xl hover:-translate-y-1 transition transform"
+                        data-i18n="nav_documents">
+                        Документы
+                    </button>
                 </div>
             </div>
         </section>
@@ -412,17 +350,8 @@
                                     включения в уже заключённый договор необходимо
                                     оформить дополнительное соглашение с данной оговоркой.</span></p>
                         </div>
-                        <a href="#" class="doc-card">
-                            <div class="doc-icon bg-accent-light text-accent">
-                                <i class="far fa-file-word"></i>
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-bold text-slate-700" data-i18n="doc2">Образец иска</p>
-                                <p class="text-xs text-slate-400 mt-0.5">DOCX</p>
-                            </div>
-                            <i class="fas fa-download text-slate-400"></i>
-                        </a>
                         <!-- Dynamic documents from admin are appended below the static ones -->
+                        <div id="dynamic-docs-list" class="space-y-4 pt-4"></div>
                         <div class="text-slate-400 text-sm italic py-8 text-center" id="docs-empty-state"
                             data-i18n="docs_empty">Документы ещё не загружены.</div>
                     </div>

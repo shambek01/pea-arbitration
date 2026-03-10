@@ -119,8 +119,14 @@
                     <div class="space-y-5">
                         <div>
                             <label class="block text-[10px] uppercase font-black text-slate-400 mb-2">Название
-                                документа (RU/KZ)</label>
+                                документа (RU)</label>
                             <input type="text" id="doc-title" placeholder="Например: Регламент 2024"
+                                class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-black text-slate-400 mb-2">Название
+                                документа (KZ)</label>
+                            <input type="text" id="doc-title-kz" placeholder="Мысалы: Регламент 2024"
                                 class="w-full p-4 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
                         <div>
@@ -284,6 +290,7 @@
         // ── Upload document ───────────────────────────────────
         function uploadDocument() {
             const title = document.getElementById('doc-title').value.trim();
+            const titleKz = document.getElementById('doc-title-kz').value.trim();
             const titleEn = document.getElementById('doc-title-en').value.trim();
             const desc = document.getElementById('doc-desc').value.trim();
             const url = document.getElementById('doc-url').value.trim();
@@ -298,11 +305,12 @@
             if (!url) { errEl.textContent = 'Укажите ссылку на файл.'; errEl.classList.remove('hidden'); return; }
 
             db.collection("documents").add({
-                title, titleEn, desc, url, type,
+                title, titleKz, titleEn, desc, url, type,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             }).then(() => {
                 sucEl.classList.remove('hidden');
                 document.getElementById('doc-title').value = '';
+                document.getElementById('doc-title-kz').value = '';
                 document.getElementById('doc-title-en').value = '';
                 document.getElementById('doc-desc').value = '';
                 document.getElementById('doc-url').value = '';

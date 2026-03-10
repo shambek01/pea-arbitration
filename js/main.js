@@ -560,7 +560,9 @@ window.loadDocuments = function () {
         snap.forEach(doc => {
             const d = doc.data();
             const t = iconMap[d.type] || iconMap.other;
-            const displayTitle = (window.currentLang === 'en' && d.titleEn) ? d.titleEn : d.title;
+            let displayTitle = d.title;
+            if (window.currentLang === 'en' && d.titleEn) displayTitle = d.titleEn;
+            if (window.currentLang === 'kz' && d.titleKz) displayTitle = d.titleKz;
             const card = document.createElement('a');
             card.href = d.url || '#';
             card.target = '_blank';
