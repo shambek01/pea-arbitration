@@ -538,11 +538,23 @@ window.toggleClauseDoc = function () {
     if (icon) icon.classList.toggle('rotate-180');
 }
 
-// Load documents from Firestore and append into the unified doc list
-window.loadDocuments = function () {
+// Global array to cache documents data client-side
+window.documentsData = [];
+window.docsListenerInitialized = false;
+
+window.renderDocumentsList = function () {
     const list = document.getElementById('dynamic-docs-list') || document.getElementById('all-docs-list');
     const empty = document.getElementById('docs-empty-state');
     if (!list) return;
+
+    list.innerHTML = '';
+
+    if (window.documentsData.length === 0) {
+        if (empty) empty.style.display = 'block';
+        return;
+    }
+
+    if (empty) empty.style.display = 'none';
 
     const iconMap = {
         pdf: { icon: 'fas fa-file-pdf', bg: 'bg-red-50', color: 'text-red-500' },
@@ -551,48 +563,49 @@ window.loadDocuments = function () {
         other: { icon: 'fas fa-file', bg: 'bg-slate-100', color: 'text-slate-500' }
     };
 
+    window.documentsData.forEach(d => {
+        const t = iconMap[d.type] || iconMap.other;
+        let displayTitle = d.title;
+        if (window.currentLang === 'en' && d.titleEn) displayTitle = d.titleEn;
+        if (window.currentLang === 'kz' && d.titleKz) displayTitle = d.titleKz;
+        const card = document.createElement('a');
+        card.href = d.url || '#';
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.className = 'doc-card';
+        card.innerHTML = `
+            <div class="doc-icon ${t.bg} ${t.color}"><i class="${t.icon}"></i></div>
+            <div class="flex-1">
+                <p class="font-bold text-slate-700">${displayTitle}</p>
+                ${d.desc ? `<p class="text-xs text-slate-400 mt-0.5">${d.desc}</p>` : ''}
+                <p class="text-[10px] uppercase font-bold text-amber-600 mt-1">${(d.type || 'OTHER').toUpperCase()}</p>
+            </div>
+            <i class="fas fa-download text-slate-400"></i>
+        `;
+        list.appendChild(card);
+    });
+}
+
+// Load documents from Firestore and append into the unified doc list
+window.loadDocuments = function () {
     if (typeof firebase === 'undefined') return;
-    const db = firebase.firestore();
 
-    // Unsubscribe from previous listener if it exists to avoid memory leaks
-    if (window.docsUnsubscribe) {
-        window.docsUnsubscribe();
+    if (!window.docsListenerInitialized) {
+        window.docsListenerInitialized = true;
+        const db = firebase.firestore();
+
+        if (window.docsUnsubscribe) window.docsUnsubscribe();
+
+        window.docsUnsubscribe = db.collection('documents').orderBy('timestamp', 'desc').onSnapshot(snap => {
+            window.documentsData = [];
+            snap.forEach(doc => {
+                window.documentsData.push(doc.data());
+            });
+            window.renderDocumentsList();
+        }, err => console.error('Docs load error:', err));
+    } else {
+        window.renderDocumentsList();
     }
-
-    window.docsUnsubscribe = db.collection('documents').orderBy('timestamp', 'desc').onSnapshot(snap => {
-        // Clear previous entries to prevent duplication on language switch
-        list.innerHTML = '';
-
-        if (snap.empty) {
-            if (empty) empty.style.display = 'block';
-            return;
-        }
-
-        if (empty) empty.style.display = 'none';
-
-        snap.forEach(doc => {
-            const d = doc.data();
-            const t = iconMap[d.type] || iconMap.other;
-            let displayTitle = d.title;
-            if (window.currentLang === 'en' && d.titleEn) displayTitle = d.titleEn;
-            if (window.currentLang === 'kz' && d.titleKz) displayTitle = d.titleKz;
-            const card = document.createElement('a');
-            card.href = d.url || '#';
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
-            card.className = 'doc-card';
-            card.innerHTML = `
-                <div class="doc-icon ${t.bg} ${t.color}"><i class="${t.icon}"></i></div>
-                <div class="flex-1">
-                    <p class="font-bold text-slate-700">${displayTitle}</p>
-                    ${d.desc ? `<p class="text-xs text-slate-400 mt-0.5">${d.desc}</p>` : ''}
-                    <p class="text-[10px] uppercase font-bold text-amber-600 mt-1">${(d.type || 'OTHER').toUpperCase()}</p>
-                </div>
-                <i class="fas fa-download text-slate-400"></i>
-            `;
-            list.appendChild(card);
-        });
-    }, err => console.error('Docs load error:', err));
 }
 document.getElementById('adminPassword')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') window.checkAdminPassword(); });
 
