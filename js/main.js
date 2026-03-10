@@ -43,9 +43,9 @@ window.currentLang = 'ru';
 
 window.translations = {
     'ru': {
-        'brand_name': 'Центрально-Евразийский', 'brand_sub': 'Арбитражный суд',
+        'brand_name': 'Центрально-Азиатский', 'brand_sub': 'экономический арбитраж',
         'nav_about': 'О нас', 'nav_arbitrators': 'Арбитры', 'nav_documents': 'Документы', 'nav_contacts': 'Контакты', 'nav_apply': 'Подать заявку',
-        'hero_title': 'Справедливое разрешение споров <br><span class="text-amber-500">для вашего бизнеса</span>',
+        'hero_title': 'Центрально-Азиатский <br><span class="text-amber-500">экономический арбитраж</span>',
         'hero_desc': 'Разрешение коммерческих споров в рамках правового поля с полным соблюдением принципов конфиденциальности.',
         'btn_apply': 'Подать иск онлайн', 'btn_clause': 'Арбитражная оговорка',
         'stat_arbitrators': 'Арбитров в реестре', 'stat_cases': 'Рассмотренных дел', 'stat_cancelled': 'Отмененных решений',
@@ -164,7 +164,7 @@ window.translations = {
         'clause_text': 'Все споры, разногласия или требования, возникшие из настоящего договора (соглашения, контракта), либо в связи с ним, подлежат разрешению в постоянно действующем арбитраже – ТОО «Центрально-Азиатский экономический арбитраж» в соответствии с его Регламентом. Состав арбитража будет включать одного арбитра. Язык арбитражного разбирательства – русский.',
         'clause_info': 'Для включения в уже заключённый договор необходимо оформить дополнительное соглашение с данной оговоркой.',
         'modal_bio_title': 'Биография',
-        'footer_copy': '© 2024 Центрально-Евразийский арбитражный суд. Все права защищены.',
+        'footer_copy': '© 2024 Центрально-Азиатский экономический арбитраж. Все права защищены.',
         'clause_info_2': 'Для включения в уже заключённый договор необходимо оформить дополнительное соглашение с данной оговоркой.',
         'breadcrumb_home': 'Главная',
         'breadcrumb_about': 'О нас',
@@ -181,9 +181,9 @@ window.translations = {
         'btn_close': 'Понятно'
     },
     'kz': {
-        'brand_name': 'Орталық Еуразиялық', 'brand_sub': 'Төрелік соты',
+        'brand_name': 'Орталық Азия', 'brand_sub': 'экономикалық төрелігі',
         'nav_about': 'Біз туралы', 'nav_arbitrators': 'Төрешілер', 'nav_documents': 'Құжаттар', 'nav_contacts': 'Байланыс', 'nav_apply': 'Өтінім беру',
-        'hero_title': 'Сіздің бизнесіңіз үшін <br><span class="text-amber-500">дауларды әділ шешу</span>',
+        'hero_title': 'Орталық Азия <br><span class="text-amber-500">экономикалық төрелігі</span>',
         'hero_desc': 'Коммерциялық дауларды құқықтық аяда, құпиялылық принциптерін толық сақтай отырып шешу.',
         'btn_apply': 'Онлайн талап қою', 'btn_clause': 'Төрелік ескертпе',
         'stat_arbitrators': 'Тізілімдегі төрешілер', 'stat_cases': 'Қаралған істер', 'stat_cancelled': 'Күші жойылған жоқ',
@@ -302,7 +302,7 @@ window.translations = {
         'clause_text': 'Осы шарттан (келісімнен, келісімшарттан) немесе оған байланысты туындаған барлық даулар, келіспеушіліктер немесе талаптар тұрақты жұмыс істейтін төрелік – «Орталық Азия экономикалық төрелігі» ЖШС-нде оның Регламентіне сәйкес шешілуге жатады. Төрелік құрамына бір төреші кіреді. Төрелік талқылау тілі – орыс тілі.',
         'clause_info': 'Бұрын жасалған шартқа қосу үшін осы ескертпемен қосымша келісім жасасу қажет.',
         'modal_bio_title': 'Өмірбаян',
-        'footer_copy': '© 2024 Орталық Еуразиялық төрелік соты. Барлық құқықтар қорғалған.',
+        'footer_copy': '© 2024 Орталық Азия экономикалық төрелігі. Барлық құқықтар қорғалған.',
         'clause_info_2': 'Бұрын жасалған шартқа қосу үшін осы ескертпемен қосымша келісім жасасу қажет.',
         'breadcrumb_home': 'Басты бет',
         'breadcrumb_about': 'Біз туралы',
@@ -319,9 +319,9 @@ window.translations = {
         'btn_close': 'Түсінікті'
     },
     'en': {
-        'brand_name': 'Central Eurasian', 'brand_sub': 'Arbitration Court',
+        'brand_name': 'Central Asian', 'brand_sub': 'Economic Arbitration',
         'nav_about': 'About', 'nav_arbitrators': 'Arbitrators', 'nav_documents': 'Documents', 'nav_contacts': 'Contacts', 'nav_apply': 'Submit claim',
-        'hero_title': 'Fair dispute resolution <br><span class="text-amber-500">for your business</span>',
+        'hero_title': 'Central Asian <br><span class="text-amber-500">Economic Arbitration</span>',
         'hero_desc': 'Resolution of commercial disputes within the legal framework with full observance of confidentiality principles.',
         'btn_apply': 'Apply online', 'btn_clause': 'Arbitration clause',
         'stat_arbitrators': 'Arbitrators in registry', 'stat_cases': 'Cases resolved', 'stat_cancelled': 'Cancelled decisions',
@@ -440,7 +440,7 @@ window.translations = {
         'clause_text': 'All disputes, disagreements, or claims arising out of or in connection with this contract (agreement) shall be resolved by the permanent arbitration – "Central Asian Economic Arbitration" LLP in accordance with its Rules. The arbitral tribunal will consist of one arbitrator. The language of the arbitral proceedings shall be Russian.',
         'clause_info': 'To include this in an already concluded contract, an additional agreement with this clause must be issued.',
         'modal_bio_title': 'Biography',
-        'footer_copy': '© 2024 Central Eurasian Arbitration Court. All rights reserved.',
+        'footer_copy': '© 2024 Central Asian Economic Arbitration. All rights reserved.',
         'clause_info_2': 'To include this in an already concluded contract, an additional agreement with this clause must be issued.',
         'breadcrumb_home': 'Home',
         'breadcrumb_about': 'About Us',
