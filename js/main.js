@@ -475,7 +475,8 @@ window.setLanguage = function (lang) {
     const langEn = document.getElementById('lang-en');
     if (langEn) langEn.classList.toggle('active', lang === 'en');
 
-    if (!document.getElementById('registry-view').classList.contains('view-hidden')) window.renderArbitrators();
+    const registryView = document.getElementById('registry-view');
+    if (registryView && !registryView.classList.contains('view-hidden')) window.renderArbitrators();
 
     // Re-render list of documents immediately behind scenes
     window.renderDocumentsList();
@@ -484,8 +485,11 @@ window.setLanguage = function (lang) {
 window.switchView = function (view) {
     if (view === 'admin' && !isAuth) { window.openAdminAuthModal(); return; }
     document.querySelectorAll('.view-content').forEach(v => v.classList.add('view-hidden'));
-    document.getElementById(view + '-view').classList.remove('view-hidden');
-    if (view === 'registry') window.renderArbitrators();
+
+    const targetView = document.getElementById(view + '-view');
+    if (targetView) targetView.classList.remove('view-hidden');
+
+    if (view === 'registry' && typeof window.renderArbitrators === 'function') window.renderArbitrators();
     if (view === 'documents') window.loadDocuments();
     window.scrollTo(0, 0);
 }
