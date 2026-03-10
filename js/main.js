@@ -553,7 +553,13 @@ window.loadDocuments = function () {
 
     if (typeof firebase === 'undefined') return;
     const db = firebase.firestore();
-    db.collection('documents').orderBy('timestamp', 'desc').get().then(snap => {
+
+    // Unsubscribe from previous listener if it exists to avoid memory leaks
+    if (window.docsUnsubscribe) {
+        window.docsUnsubscribe();
+    }
+
+    window.docsUnsubscribe = db.collection('documents').orderBy('timestamp', 'desc').onSnapshot(snap => {
         // Clear previous entries to prevent duplication on language switch
         list.innerHTML = '';
 
@@ -586,7 +592,7 @@ window.loadDocuments = function () {
             `;
             list.appendChild(card);
         });
-    }).catch(err => console.error('Docs load error:', err));
+    }, err => console.error('Docs load error:', err));
 }
 document.getElementById('adminPassword')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') window.checkAdminPassword(); });
 

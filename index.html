@@ -22,16 +22,17 @@
                     <i class="fas fa-balance-scale"></i>
                 </div>
                 <div class="cursor-pointer" onclick="switchView('home')">
-                    <h1 class="font-bold text-sm uppercase tracking-wider leading-none" data-i18n="brand_name">Первый
-                        Экономический</h1>
+                    <h1 class="font-bold text-sm uppercase tracking-wider leading-none" data-i18n="brand_name">
+                        Центрально-Евразийский</h1>
                     <p class="text-xs text-slate-500 uppercase tracking-widest" data-i18n="brand_sub" data-i18n="th_arb"
                         data-i18n="th_arb">Арбитраж</p>
                 </div>
             </div>
 
             <nav class="hidden lg:flex gap-6 text-sm font-medium text-slate-600">
-                <a href="javascript:void(0)" onclick="switchView('about')" class="hover:text-accent transition"
-                    data-i18n="nav_about">Об арбитраже</a>
+                <a href="javascript:void(0)"
+                    onclick="switchView('home'); setTimeout(() => document.getElementById('about-section').scrollIntoView({behavior:'smooth'}), 100)"
+                    class="hover:text-accent transition" data-i18n="nav_about">Об арбитраже</a>
                 <a href="javascript:void(0)" onclick="switchView('documents')" class="hover:text-accent transition"
                     data-i18n="nav_documents">Документы</a>
                 <a href="javascript:void(0)"
@@ -63,7 +64,9 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white">
             <nav class="flex flex-col px-4 py-4 gap-4 text-sm font-semibold text-slate-700">
-                <a href="javascript:void(0)" onclick="switchView('about'); toggleMobileMenu()" data-i18n="nav_about">Об
+                <a href="javascript:void(0)"
+                    onclick="switchView('home'); setTimeout(() => document.getElementById('about-section').scrollIntoView({behavior:'smooth'}), 100); toggleMobileMenu()"
+                    data-i18n="nav_about">Об
                     арбитраже</a>
                 <a href="javascript:void(0)" onclick="switchView('documents'); toggleMobileMenu()"
                     data-i18n="nav_documents">Документы</a>
@@ -181,200 +184,197 @@
             </div>
         </section>
 
-        <!-- How it works -->
-        <section class="py-24 bg-white relative z-10 border-t border-slate-100">
-            <div class="container mx-auto px-4">
+
+        <!-- About Arbitration -->
+        <section id="about-section" class="py-20 bg-slate-50 border-t border-slate-100">
+            <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-16 reveal">
-                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4" data-i18n="how_works_title"
-                        data-i18n="how_works_title">Как это работает</h3>
-                    <p class="text-slate-500" data-i18n="how_works_desc" data-i18n="how_works_desc">Простой процесс
-                        разрешения спора от подачи заявления до результата</p>
+                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4" data-i18n="about_title">Об арбитраже</h3>
+                    <p class="text-slate-500 text-lg" data-i18n="about_desc">Всё, что нужно знать об арбитражном
+                        разбирательстве</p>
                 </div>
-                <div class="grid md:grid-cols-4 gap-8 relative">
-                    <!-- Steps -->
-                    <div class="reveal reveal-delay-1 text-center group">
-                        <div
-                            class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-accent text-3xl mb-6 group-hover:bg-accent group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
-                            <i class="fas fa-file-signature"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step1_title" data-i18n="step1_title">1.
-                            Подача иска</h4>
-                        <p class="text-slate-500 text-sm" data-i18n="step1_desc" data-i18n="step1_desc">Заполните форму
-                            онлайн или отправьте документы на почту</p>
-                    </div>
-                    <div class="reveal reveal-delay-2 text-center group">
-                        <div
-                            class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-accent text-3xl mb-6 group-hover:bg-accent group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step2_title" data-i18n="step2_title">2.
-                            Выбор арбитра</h4>
-                        <p class="text-slate-500 text-sm" data-i18n="step2_desc" data-i18n="step2_desc">Стороны выбирают
-                            независимого арбитра из нашего реестра</p>
-                    </div>
-                    <div class="reveal reveal-delay-3 text-center group">
-                        <div
-                            class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-accent text-3xl mb-6 group-hover:bg-accent group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step3_title" data-i18n="step3_title">3.
-                            Рассмотрение</h4>
-                        <p class="text-slate-500 text-sm" data-i18n="step3_desc" data-i18n="step3_desc">Оперативное
-                            изучение дела с соблюдением конфиденциальности</p>
-                    </div>
-                    <div class="reveal reveal-delay-4 text-center group">
-                        <div
-                            class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-accent text-3xl mb-6 group-hover:bg-accent group-hover:text-white transition-all shadow-sm border border-slate-100 group-hover:shadow-xl group-hover:-translate-y-2">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-navy mb-2" data-i18n="step4_title" data-i18n="step4_title">4.
-                            Решение</h4>
-                        <p class="text-slate-500 text-sm" data-i18n="step4_desc">Вынесение окончательного решения,
-                            имеющего юридическую силу
+                <div class="space-y-10">
+
+
+                    <!-- What is arbitration -->
+                    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                        <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
+                            <span
+                                class="w-9 h-9 primary-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                    class="fas fa-gavel"></i></span>
+                            <span data-i18n="about_q1">Что такое арбитраж
+                            </span>
+                        </h4>
+                        <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a1_1">Арбитраж – это
+                            негосударственный суд, образованный
+                            специально для рассмотрения конкретного гражданско-правового спора или постоянно действующий
+                            арбитраж.</p>
+                        <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a1_2">Постоянно действующие
+                            арбитражи могут образовываться
+                            физическими и (или) юридическими лицами в соответствии с законодательством Республики
+                            Казахстан.
                         </p>
+                        <p class="text-slate-600 leading-relaxed" data-i18n="about_a1_3">Арбитраж для рассмотрения
+                            конкретного спора создается
+                            сторонами для разрешения спора и действует до разрешения данного спора или до принятия
+                            сторонами
+                            решения о передаче спора в суд.</p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Document Library -->
-        <section class="py-20 bg-white border-t border-slate-100">
-            <div class="container mx-auto px-4">
-                <div class="max-w-5xl mx-auto bg-slate-50 rounded-[3rem] p-12 md:p-20 shadow-inner text-center">
-                    <div
-                        class="w-20 h-20 bg-accent-light text-accent rounded-full flex items-center justify-center text-4xl mx-auto mb-8 shadow-sm">
-                        <i class="fas fa-folder-open"></i>
+                    <!-- Who can apply -->
+                    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                        <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
+                            <span
+                                class="w-9 h-9 primary-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                    class="fas fa-users"></i></span>
+                            <span data-i18n="about_q2">Кто вправе обратиться в арбитраж
+                            </span>
+                        </h4>
+                        <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a2_1">Сторонами в арбитраже
+                            могут
+                            быть физические и (или)
+                            юридические лица, независимо от их места жительства или места нахождения на территории
+                            Республики Казахстан либо за её пределами. Спор может быть передан на рассмотрение арбитража
+                            при
+                            наличии заключённого между сторонами арбитражного соглашения в отношении споров, которые
+                            возникли или могут возникнуть между сторонами по какому-либо конкретному
+                            гражданско-правовому
+                            отношению.</p>
+                        <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a2_2">Арбитражное соглашение в
+                            отношении спора, который
+                            находится на рассмотрении в суде, может быть заключено до принятия решения по спору
+                            указанным
+                            судом. В этом случае суд выносит определение об оставлении заявления без рассмотрения.</p>
+                        <p class="text-slate-600 leading-relaxed" data-i18n="about_a2_3">Арбитражное соглашение
+                            заключается
+                            в письменной форме. Оно
+                            может быть заключено в виде арбитражной оговорки, включённой в текст гражданско-правового
+                            договора.</p>
                     </div>
-                    <h3 class="serif text-4xl mb-4 text-navy" data-i18n="lib_title">Документы</h3>
-                    <p class="text-slate-500 mb-10 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="lib_desc_full">
-                        Мы подготовили все необходимые шаблоны для вашей защиты.</p>
-                    <button onclick="switchView('documents')"
-                        class="btn-accent primary-gradient text-white px-12 py-5 rounded-full text-lg font-bold shadow-lg shadow-amber-500/30 hover:shadow-xl hover:-translate-y-1 transition transform"
-                        data-i18n="nav_documents">
-                        Документы
-                    </button>
-                </div>
-            </div>
-        </section>
 
-        <!-- FAQ Section -->
-        <section class="py-20 bg-slate-50 border-t border-slate-100">
-            <div class="container mx-auto px-4 max-w-4xl">
-                <div class="text-center mb-16 reveal">
-                    <h3 class="serif text-3xl md:text-4xl text-navy mb-4" data-i18n="faq_title" data-i18n="faq_title">
-                        Часто задаваемые вопросы</h3>
-                </div>
-                <div class="space-y-4">
-                    <div
-                        class="bg-white rounded-2xl p-6 md:p-8 reveal reveal-delay-1 border border-slate-100 shadow-sm hover:shadow-md hover:border-amber-200 transition">
-                        <h4 class="font-bold text-lg text-navy mb-3"><i
-                                class="fas fa-question-circle text-accent mr-2"></i> <span
-                                data-i18n="faq1_q">Обязательно ли решение
-                                арбитража?</span></h4>
-                        <p class="text-slate-500 leading-relaxed ml-7" data-i18n="faq1_a">Да, решение арбитража
-                            окончательно, вступает в
-                            силу немедленно после его оглашения и обязательно для исполнения сторонами.</p>
-                    </div>
-                    <div
-                        class="bg-white rounded-2xl p-6 md:p-8 reveal reveal-delay-2 border border-slate-100 shadow-sm hover:shadow-md hover:border-amber-200 transition">
-                        <h4 class="font-bold text-lg text-navy mb-3"><i
-                                class="fas fa-question-circle text-accent mr-2"></i> <span data-i18n="faq2_q">Как
-                                долго рассматривается дело?
-                            </span></h4>
-                        <p class="text-slate-500 leading-relaxed ml-7" data-i18n="faq2_a">В среднем рассмотрение дела в
-                            нашем арбитраже
-                            занимает от 7 до 14 дней. Это значительно быстрее, чем в государственных судах.</p>
-                    </div>
-                    <div
-                        class="bg-white rounded-2xl p-6 md:p-8 reveal reveal-delay-3 border border-slate-100 shadow-sm hover:shadow-md hover:border-amber-200 transition">
-                        <h4 class="font-bold text-lg text-navy mb-3"><i
-                                class="fas fa-question-circle text-accent mr-2"></i> <span data-i18n="faq3_q">Можно
-                                ли обжаловать решение?
-                            </span></h4>
-                        <p class="text-slate-500 leading-relaxed ml-7" data-i18n="faq3_a">Решение арбитража является
-                            окончательным и не
-                            подлежит апелляционному обжалованию, что экономит время и средства сторон.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- DOCUMENTS VIEW -->
-    <main id="documents-view" class="view-content view-hidden">
-        <section class="navy-blue-bg py-12 text-white">
-            <div class="container mx-auto px-4">
-                <nav class="flex text-xs uppercase tracking-widest text-slate-400 mb-6 gap-2 items-center">
-                    <a href="javascript:void(0)" onclick="switchView('home')" class="hover:text-accent"
-                        data-i18n="breadcrumb_home">Главная</a>
-                    <i class="fas fa-chevron-right text-[10px]"></i>
-                    <span class="text-white" data-i18n="nav_documents">Документы</span>
-                </nav>
-                <h2 class="serif text-4xl" data-i18n="nav_documents">Документы</h2>
-                <p class="text-slate-400 mt-2" data-i18n="docs_page_desc">Официальные документы и материалы арбитража
-                </p>
-            </div>
-        </section>
-        <section class="py-12 bg-slate-50">
-            <div class="container mx-auto px-4 max-w-4xl">
-                <div class="mb-10">
-                    <h3 class="text-lg font-black text-navy uppercase tracking-widest mb-6 flex items-center gap-2">
-                        <i class="fas fa-file-alt text-accent"></i>
-                        <span data-i18n="docs_section_static">Документы</span>
-                    </h3>
-                    <div id="all-docs-list" class="space-y-4">
-                        <!-- Arbitration clause -->
-                        <div class="doc-card cursor-pointer" onclick="toggleClauseDoc()">
-                            <div class="doc-icon bg-accent-light text-accent">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-bold text-slate-700" data-i18n="doc1">Арбитражная оговорка</p>
-                                <p class="text-xs text-slate-400 mt-0.5" data-i18n="doc1_hint">Нажмите, чтобы посмотреть
-                                    текст оговорки</p>
-                            </div>
-                            <i id="clause-doc-chevron"
-                                class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                    <!-- Form and content of agreement -->
+                    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                        <h4 class="font-bold text-xl text-navy mb-4 flex items-center gap-3">
+                            <span
+                                class="w-9 h-9 primary-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                    class="fas fa-file-contract"></i></span>
+                            <span data-i18n="about_q3">Форма и содержание арбитражного соглашения
+                            </span>
+                        </h4>
+                        <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a3_1">Арбитражное соглашение
+                            считается заключённым в
+                            письменной форме, если оно содержится в виде арбитражной оговорки в документе, подписанном
+                            сторонами, либо заключено путём обмена письмами, телеграммами, телефонограммами, факсами,
+                            электронными документами или иными документами, определяющими субъектов и содержание их
+                            волеизъявления.</p>
+                        <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a3_2">Арбитражное соглашение
+                            также
+                            считается заключённым в
+                            письменной форме, если оно заключается путём обмена исковым заявлением и отзывом на иск, в
+                            которых одна из сторон утверждает о наличии соглашения, а другая против этого не возражает.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed" data-i18n="about_a3_3">Ссылка в договоре на документ,
+                            содержащий условие о
+                            передаче спора на разрешение арбитража, является арбитражным соглашением при условии, что
+                            договор заключён в письменной форме, и данная ссылка такова, что делает арбитражное
+                            соглашение
+                            частью договора.</p>
+                        <div class="mt-6 p-4 bg-accent-light border border-amber-200 rounded-xl text-slate-500 text-sm">
+                            <i class="fas fa-info-circle text-accent mr-2"></i><span data-i18n="about_a3_info">Для
+                                включения арбитражной оговорки в
+                                заключённый договор (соглашение, контракт) необходимо заключить дополнительное
+                                соглашение к
+                                нему, в котором предусмотреть вышеуказанную арбитражную оговорку.
+                            </span>
                         </div>
-                        <div id="clause-doc-text" class="hidden px-6 pb-4">
-                            <div
-                                class="bg-accent-light border border-amber-200 rounded-xl p-5 text-slate-700 italic text-sm leading-relaxed">
-                                Все споры, разногласия или требования, возникшие из настоящего договора
-                                (соглашения, контракта), либо в связи с ним, подлежат разрешению в постоянно
-                                действующем арбитраже – ТОО «Центрально-Азиатский экономический арбитраж» в
-                                соответствии с его Регламентом. Состав арбитража будет включать одного арбитра.
-                                Язык арбитражного разбирательства – русский.
-                            </div>
-                            <p class="text-slate-400 text-xs mt-3"><i
-                                    class="fas fa-info-circle text-accent mr-1"></i><span data-i18n="clause_info_2">Для
-                                    включения в уже заключённый договор необходимо
-                                    оформить дополнительное соглашение с данной оговоркой.</span></p>
-                        </div>
-                        <!-- Dynamic documents from admin are appended below the static ones -->
-                        <div id="dynamic-docs-list" class="space-y-4 pt-4"></div>
-                        <div class="text-slate-400 text-sm italic py-8 text-center" id="docs-empty-state"
-                            data-i18n="docs_empty">Документы ещё не загружены.</div>
                     </div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- ABOUT VIEW -->
-    <main id="about-view" class="view-content view-hidden">
-        <!-- Hero bar -->
-        <section class="navy-blue-bg py-12 text-white">
-            <div class="container mx-auto px-4">
-                <nav class="flex text-xs uppercase tracking-widest text-slate-400 mb-6 gap-2 items-center">
-                    <a href="javascript:void(0)" onclick="switchView('home')" class="hover:text-accent"
-                        data-i18n="breadcrumb_home">Главная</a>
-                    <i class="fas fa-chevron-right text-[10px]"></i>
-                    <span class="text-white" data-i18n="breadcrumb_about">О нас</span>
-                </nav>
-                <h2 class="serif text-4xl" data-i18n="about_title" data-i18n="about_title">Об арбитраже</h2>
-                <p class="text-slate-400 mt-2" data-i18n="about_desc" data-i18n="about_desc">Всё, что нужно знать об
-                    арбитражном разбирательстве</p>
-            </div>
+                    <!-- Types of disputes -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                            <h4 class="font-bold text-lg text-navy mb-4 flex items-center gap-3">
+                                <span
+                                    class="w-9 h-9 bg-green-500 text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                        class="fas fa-check"></i></span>
+                                <span data-i18n="about_q4">Какие споры рассматривает арбитраж?
+                                </span>
+                            </h4>
+                            <p class="text-slate-600 text-sm mb-4" data-i18n="about_a4_info">Арбитраж вправе
+                                рассматривать
+                                споры, вытекающие из
+                                гражданско-правовых отношений, между физическими и (или) юридическими лицами:</p>
+                            <ul class="space-y-2 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-green-500 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a4_li1">имущественные споры;</span></li>
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-green-500 text-[6px] mt-2"></i> споры, возникающие из
+                                    личных неимущественных отношений, связанных с имущественными.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                            <h4 class="font-bold text-lg text-navy mb-4 flex items-center gap-3">
+                                <span
+                                    class="w-9 h-9 bg-red-500 text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                        class="fas fa-times"></i></span>
+                                <span data-i18n="about_q5">Арбитражу не подведомственны споры:
+                                </span>
+                            </h4>
+                            <ul class="space-y-2 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-red-400 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a5_li1">затрагивающие интересы
+                                        несовершеннолетних лиц, недееспособных или ограниченно дееспособных, третьих
+                                        лиц, не
+                                        являющихся участниками арбитражного соглашения;</span></li>
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-red-400 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a5_li2">споры между банками второго
+                                        уровня;</span></li>
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-red-400 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a5_li3">о реабилитации и
+                                        банкротстве;</span></li>
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-red-400 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a5_li4">между субъектами
+                                        естественных монополий и их потребителями;</span></li>
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-red-400 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a5_li5">между государственными
+                                        органами, субъектами квазигосударственного сектора;</span></li>
+                                <li class="flex items-start gap-2"><i
+                                        class="fas fa-circle text-red-400 text-[6px] mt-2"></i> <span
+                                        data-i18n="about_a5_li6">возникающие из личных
+                                        неимущественных отношений, не связанных с имущественными.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Advantages vs court -->
+                    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                        <h4 class="font-bold text-xl text-navy mb-6 flex items-center gap-3">
+                            <span
+                                class="w-9 h-9 primary-gradient text-white rounded-lg flex items-center justify-center shrink-0"><i
+                                    class="fas fa-star"></i></span>
+                            <span data-i18n="about_q6">Преимущества рассмотрения спора в арбитраже по сравнению с
+                                государственным судом
+                            </span>
+                        </h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100"><i
+                                    class="fas fa-check-circle text-accent mt-1 shrink-0"></i>
+                                <p class="text-slate-600 text-sm" data-i18n="about_a6_li1">Спорящие стороны вправе
+                                    самостоятельно определить правила,
+                                    10px]"></i>
+                                    <span class="text-white" data-i18n="breadcrumb_about">О нас</span>
+                                    </nav>
+                                <h2 class="serif text-4xl" data-i18n="about_title" data-i18n="about_title">Об арбитраже
+                                </h2>
+                                <p class="text-slate-400 mt-2" data-i18n="about_desc" data-i18n="about_desc">Всё, что
+                                    нужно знать об
+                                    арбитражном разбирательстве</p>
+                            </div>
         </section>
 
         <!-- Content -->
@@ -693,6 +693,66 @@
         </section>
     </main>
 
+    <!-- DOCUMENTS VIEW -->
+    <main id="documents-view" class="view-content view-hidden">
+        <section class="navy-blue-bg py-12 text-white">
+            <div class="container mx-auto px-4">
+                <nav class="flex text-xs uppercase tracking-widest text-slate-400 mb-6 gap-2 items-center">
+                    <a href="javascript:void(0)" onclick="switchView('home')" class="hover:text-accent"
+                        data-i18n="breadcrumb_home">Главная</a>
+                    <i class="fas fa-chevron-right text-[10px]"></i>
+                    <span class="text-white" data-i18n="nav_documents">Документы</span>
+                </nav>
+                <h2 class="serif text-4xl" data-i18n="nav_documents">Документы</h2>
+                <p class="text-slate-400 mt-2" data-i18n="docs_page_desc">Официальные документы и материалы арбитража
+                </p>
+            </div>
+        </section>
+        <section class="py-12 bg-slate-50">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <div class="mb-10">
+                    <h3 class="text-lg font-black text-navy uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <i class="fas fa-file-alt text-accent"></i>
+                        <span data-i18n="docs_section_static">Документы</span>
+                    </h3>
+                    <div id="all-docs-list" class="space-y-4">
+                        <!-- Arbitration clause -->
+                        <div class="doc-card cursor-pointer" onclick="toggleClauseDoc()">
+                            <div class="doc-icon bg-accent-light text-accent">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-bold text-slate-700" data-i18n="doc1">Арбитражная оговорка</p>
+                                <p class="text-xs text-slate-400 mt-0.5" data-i18n="doc1_hint">Нажмите, чтобы посмотреть
+                                    текст оговорки</p>
+                            </div>
+                            <i id="clause-doc-chevron"
+                                class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                        </div>
+                        <div id="clause-doc-text" class="hidden px-6 pb-4">
+                            <div
+                                class="bg-accent-light border border-amber-200 rounded-xl p-5 text-slate-700 italic text-sm leading-relaxed">
+                                Все споры, разногласия или требования, возникшие из настоящего договора
+                                (соглашения, контракта), либо в связи с ним, подлежат разрешению в постоянно
+                                действующем арбитраже – ТОО «Центрально-Азиатский экономический арбитраж» в
+                                соответствии с его Регламентом. Состав арбитража будет включать одного арбитра.
+                                Язык арбитражного разбирательства – русский.
+                            </div>
+                            <p class="text-slate-400 text-xs mt-3"><i
+                                    class="fas fa-info-circle text-accent mr-1"></i><span data-i18n="clause_info_2">Для
+                                    включения в уже заключённый договор необходимо
+                                    оформить дополнительное соглашение с данной оговоркой.</span></p>
+                        </div>
+                        <!-- Dynamic documents from admin are appended below the static ones -->
+                        <div id="dynamic-docs-list" class="space-y-4 pt-4"></div>
+                        <div class="text-slate-400 text-sm italic py-8 text-center" id="docs-empty-state"
+                            data-i18n="docs_empty">Документы ещё не загружены.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <div id="arbitrator-modal"
         class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md hidden">
         <div class="bg-white w-full max-w-3xl rounded-[2.5rem] shadow-2xl overflow-hidden relative">
@@ -955,7 +1015,8 @@
                 <h4 class="font-black mb-8 uppercase tracking-widest text-accent text-sm" data-i18n="footer_sections">
                     Разделы</h4>
                 <ul class="space-y-4 text-sm font-bold text-white">
-                    <li class="hover:text-accent transition cursor-pointer" onclick="switchView('home')"
+                    <li class="hover:text-accent transition cursor-pointer"
+                        onclick="switchView('home'); setTimeout(() => document.getElementById('about-section').scrollIntoView({behavior:'smooth'}), 100)"
                         data-i18n="nav_about" data-i18n="about_title" data-i18n="about_title">Об арбитраже</li>
                     <li class="hover:text-accent transition cursor-pointer" onclick="switchView('registry')"
                         data-i18n="nav_arbitrators">Арбитры</li>
