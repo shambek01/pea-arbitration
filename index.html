@@ -24,7 +24,8 @@
                 <div class="cursor-pointer" onclick="switchView('home')">
                     <h1 class="font-bold text-sm uppercase tracking-wider leading-none" data-i18n="brand_name">
                         Центрально-Азиатский</h1>
-                    <p class="text-xs text-slate-500 uppercase tracking-widest" data-i18n="brand_sub">Экономический арбитраж</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest" data-i18n="brand_sub">Экономический
+                        арбитраж</p>
                 </div>
             </div>
 
@@ -102,6 +103,7 @@
                         Подать иск онлайн
                     </button>
                     <button
+                        onclick="switchView('documents'); setTimeout(() => { const t = document.getElementById('clause-doc-text'); if(t && t.classList.contains('hidden')) toggleClauseDoc(); document.getElementById('all-docs-list').parentElement.scrollIntoView({behavior: 'smooth'}) }, 100)"
                         class="glass-card text-white  px-12 py-5 rounded-[2rem] text-lg font-bold hover:bg-white/20 transition"
                         data-i18n="btn_clause" data-i18n="doc1">
                         Арбитражная оговорка
@@ -115,7 +117,8 @@
             <div class="container mx-auto px-4 max-w-5xl space-y-10">
                 <div class="text-center mb-16 reveal">
                     <h3 class="serif text-3xl md:text-4xl text-navy mb-4" data-i18n="about_title">Об арбитраже</h3>
-                    <p class="text-slate-500 text-lg" data-i18n="about_desc">Всё, что нужно знать об арбитражном разбирательстве</p>
+                    <p class="text-slate-500 text-lg" data-i18n="about_desc">Всё, что нужно знать об арбитражном
+                        разбирательстве</p>
                 </div>
 
                 <!-- What is arbitration -->
@@ -127,15 +130,17 @@
                         <span data-i18n="about_q1">Что такое арбитраж
                         </span>
                     </h4>
-                    <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a1_1">Арбитраж – это
+                    <p class="text-slate-600 text-justify leading-relaxed mb-4" data-i18n="about_a1_1">Арбитраж – это
                         негосударственный суд, образованный
                         специально для рассмотрения конкретного гражданско-правового спора или постоянно действующий
                         арбитраж.</p>
-                    <p class="text-slate-600 leading-relaxed mb-4" data-i18n="about_a1_2">Постоянно действующие
+                    <p class="text-slate-600 text-justify leading-relaxed mb-4" data-i18n="about_a1_2">Постоянно
+                        действующие
                         арбитражи могут образовываться
                         физическими и (или) юридическими лицами в соответствии с законодательством Республики Казахстан.
                     </p>
-                    <p class="text-slate-600 leading-relaxed" data-i18n="about_a1_3">Арбитраж для рассмотрения
+                    <p class="text-slate-600 text-justify leading-relaxed" data-i18n="about_a1_3">Арбитраж для
+                        рассмотрения
                         конкретного спора создается
                         сторонами для разрешения спора и действует до разрешения данного спора или до принятия сторонами
                         решения о передаче спора в суд.</p>
