@@ -181,9 +181,9 @@ window.translations = {
         'btn_close': 'Понятно'
     },
     'kz': {
-        'brand_name': 'Орта Азиялық', 'brand_sub': 'ЭКОНОМИКАЛЫҚ ТӨРЕЛІГІ',
+        'brand_name': 'Орта Азиялық', 'brand_sub': 'экономикалық төрелігі',
         'nav_about': 'Біз туралы', 'nav_arbitrators': 'Төрешілер', 'nav_documents': 'Құжаттар', 'nav_contacts': 'Байланыс', 'nav_apply': 'Өтінім беру',
-        'hero_title': 'Орта Азиялық <br><span class="text-amber-500">ЭКОНОМИКАЛЫҚ ТӨРЕЛІГІ</span>',
+        'hero_title': 'Орта Азиялық <br><span class="text-amber-500">экономикалық төрелігі</span>',
         'hero_desc': 'Коммерциялық дауларды құқықтық аяда, құпиялылық принциптерін толық сақтай отырып шешу.',
         'btn_apply': 'Онлайн талап қою', 'btn_clause': 'Төрелік ескертпе',
         'stat_arbitrators': 'Тізілімдегі төрешілер', 'stat_cases': 'Қаралған істер', 'stat_cancelled': 'Күші жойылған жоқ',
